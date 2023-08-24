@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CasaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,7 +31,7 @@ use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;            
             
 Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
-
+	
 	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 	Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.perform');
 	Route::get('/login', [LoginController::class, 'show'])->middleware('guest')->name('login');
@@ -42,6 +43,13 @@ Route::get('/', function () {return redirect('/dashboard');})->middleware('auth'
 
 	Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
+Route::group(['middleware' => 'auth'], function () {
+
+	Route::get('/casa',[CasaController::class, 'index'])->name('casa.index');
+	Route::get('/casa/create',[CasaController::class, 'create'])->name('casa.create');
+	
+
+});
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
@@ -53,4 +61,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static'); 
 	Route::get('/{page}', [PageController::class, 'index'])->name('page');
 	Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+	
 });
+
+
