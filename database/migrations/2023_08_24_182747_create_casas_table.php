@@ -17,10 +17,14 @@ return new class extends Migration
             $table->string('tipo_oferta');
             $table->string('tipo_inmueble');
             $table->string('estrato');
+            $table->string('direccion');
+            $table->string('departamento');
+            $table->string('ciudad');
             $table->string('descripcion');
             $table->string('baños');
             $table->string('parqueaderos');
             $table->string('pisos');
+            // $table->foreign('') iinvestigar bien como son las referencias en laravel
             $table->timestamps();
         });
     }

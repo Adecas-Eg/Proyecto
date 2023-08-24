@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Casa extends Model
 {
     use HasFactory;
+    protected $fillable =[
+        'name',
+        'tipo_oferta',
+        'tipo_inmueble',
+        'direccion',
+        'ciudad',
+        'estrato',
+        'descripcion',
+        'baños',
+        'parqueaderos',
+        'pisos'
+
+    ];
 }

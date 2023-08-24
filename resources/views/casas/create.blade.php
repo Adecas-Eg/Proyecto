@@ -5,131 +5,191 @@
 
 
     <div class="container-fluid py-4">
+
         <div class="row">
-            <div class="col-md-10">
-                <div class="card">
-                    <div class="card-body">
-                        <p class="text-uppercase text-sm">Creacion de inmueble</p>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Nombre</label>
-                                    <input class="form-control" type="text" value="lucky.jesse">
-                                </div>
-                            </div>
+            {{-- muestra que el inmueble fue creatdo satisfactoriamente --}}
+            <div class="px-2 pt-2 col-md-10">
+                @if (session('status'))
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        <p class="text-white mb-0">{{ session('status') }}</p>
+                    </div>
+                @endif
+                @if ($message = session()->has('error'))
+                    <div class="alert alert-danger" role="alert">
+                        <p class="text-white mb-0">{{ session('status') }}</p>
+                    </div>
+                @endif
 
-                            {{-- desplegable de tio de oferta --}}
-                            <div class="col-md-4">
-                                {{-- Cambiar a variables --}}
-                                <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Tipo de oferta</label>
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>Seleccionar</option>
-                                        <option value="1">Venta</option>
-                                        <option value="2">Arriendo</option>
-                                        <option value="3">Alquiler</option>
-                                      </select>
-                                </div>
-                            </div>
+            </div>
+            {{-- comiezo del formulario --}}
+            <form action="{{ route('casa.store') }}" method="post" role="form">
 
-                            {{-- dropdown de tippo de oferta terminar de modificarlo --}}
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Tipo Inmueble</label>
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>Seleccionar</option>
-                                        <option value="1">Apartamento</option>
-                                        <option value="2">Casa</option>
-                                        <option value="3">Local</option>
-                                        <option value="3">Lote</option>
-                                      </select>
-                                </div>
-                            </div>
+                @csrf
 
-                            <div class="col-md-2">
-                                <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Estrato</label>
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>0</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                      </select>
-                                </div>
-                            </div>
-                        </div>
-                        <hr class="horizontal dark">
+                <div class="col-md-10">
+                    <div class="card">
+                        <div class="card-body">
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Dirreccion</label>
-                                    <input class="form-control" type="text"
-                                        value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+                            <p class="text-uppercase text-sm">Creacion de inmueble</p>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">Nombre</label>
+                                        <input class="form-control" type="text" name="name">
+                                        @error('name')
+                                            <p class="text-danger text-xs pt-1"> {{ $message }} </p>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                {{-- desplegable de tio de oferta --}}
+                                <div class="col-md-4">
+                                    {{-- Cambiar a variables --}}
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">Tipo de oferta</label>
+                                        <select class="form-select" aria-label="Default select example" name="tipo_oferta">
+                                            <option selected>Seleccionar</option>
+                                            <option value="Venta">Venta</option>
+                                            <option value="Arriendo">Arriendo</option>
+                                            <option value="Alquiler">Alquiler</option>
+                                        </select>
+                                        @error('tipo_oferta')
+                                            <p class="text-danger text-xs pt-1"> {{ $message }} </p>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                {{-- dropdown de tippo de inmueble modificado  --}}
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">Tipo Inmueble</label>
+                                        <select class="form-select" aria-label="Default select example"
+                                            name="tipo_inmueble">
+                                            <option selected>Seleccionar</option>
+                                            <option value="Apartamento">Apartamento</option>
+                                            <option value="Casa">Casa</option>
+                                            <option value="Local">Local</option>
+                                            <option value="Lote">Lote</option>
+                                            @error('tipo_inmueble')
+                                                <p class="text-danger text-xs pt-1"> {{ $message }} </p>
+                                            @enderror
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">Estrato</label>
+                                        <select class="form-select" aria-label="Default select example" name="estrato">
+                                            <option selected>0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                        @error('estrato')
+                                            <p class="text-danger text-xs pt-1"> {{ $message }} </p>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Ciudad</label>
-                                    <input class="form-control" type="text" value="New York">
+                            <hr class="horizontal dark">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">Direccion</label>
+                                        <input class="form-control" type="text"
+                                            value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" name="direccion">
+                                        @error('direccion')
+                                            <p class="text-danger text-xs pt-1"> {{ $message }} </p>
+                                        @enderror
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">Departamento</label>
+                                        <input class="form-control" type="text" value="New York" name="departamento">
+                                        @error('departamento')
+                                            <p class="text-danger text-xs pt-1"> {{ $message }} </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">Ciudad</label>
+                                        <input class="form-control" type="text" name="ciudad">
+                                        @error('ciudad')
+                                            <p class="text-danger text-xs pt-1"> {{ $message }} </p>
+                                        @enderror
+
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Estrato</label>
-                                    <input class="form-control" type="text" value="United States">
+                            <hr class="horizontal dark">
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        {{-- cambiar a text area --}}
+                                        <label for="example-text-input" class="form-control-label">Descripcion</label>
+                                        <input class="form-control" type="text"
+                                            value="A beautiful Dashboard for Bootstrap 5. It is Free and Open Source."
+                                            name="descripcion">
+                                        @error('descripcion')
+                                            <p class="text-danger text-xs pt-1"> {{ $message }} </p>
+                                        @enderror
+
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Postal code</label>
-                                    <input class="form-control" type="text" value="437300">
+                            <hr class="horizontal dark">
+                            <p class="text-uppercase text-sm">Espacios</p>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{-- cambiar amunto o decremento --}}
+                                        <label class="form-control-label">N° Baños</label>
+                                        <input class="form-control align-content-between" type="text" value="."
+                                            name="baños">
+                                        @error('baños')
+                                            <p class="text-danger text-xs pt-1"> {{ $message }} </p>
+                                        @enderror
+
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <hr class="horizontal dark">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    {{-- cambiar a text area --}}
-                                    <label for="example-text-input" class="form-control-label">Descripcion</label>
-                                    <input class="form-control" type="text"
-                                        value="A beautiful Dashboard for Bootstrap 5. It is Free and Open Source.">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{-- cambiar a text area --}}
+                                        <label for="asas" class="form-control-label">N° Parqueaderos</label>
+                                        <input class="form-control align-content-between" type="text" value="."
+                                            name="parqueaderos">
+                                        @error('parqueaderos')
+                                            <p class="text-danger text-xs pt-1"> {{ $message }} </p>
+                                        @enderror
+
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <hr class="horizontal dark">
-                        <p class="text-uppercase text-sm">Espacios</p>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    {{-- cambiar amunto o decremento --}}
-                                    <label for="asas" class="form-control-label">N° Baños</label>
-                                    <input class="form-control align-content-between" type="text" value="."
-                                        id="asas">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{-- cambiar a text area --}}
+                                        <label for="asas" class="form-control-label">N° Pisos</label>
+                                        <input class="form-control align-content-between" type="text" value="."
+                                            name="pisos">
+                                        @error('pisos')
+                                            <p class="text-danger text-xs pt-1"> {{ $message }} </p>
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    {{-- cambiar a text area --}}
-                                    <label for="asas" class="form-control-label">N° Parqueaderos</label>
-                                    <input class="form-control align-content-between" type="text" value="."
-                                        id="asas">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    {{-- cambiar a text area --}}
-                                    <label for="asas" class="form-control-label">N° Pisos</label>
-                                    <input class="form-control align-content-between" type="text" value="."
-                                        id="asas">
-                                </div>
+                                <button class="btn btn-primary text-white">Guardar</button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </form>
             {{-- tarjeta d ela derecha --}}
             {{-- <div class="col-md-4">
                 <div class="card card-profile">
