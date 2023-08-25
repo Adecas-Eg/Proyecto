@@ -14,13 +14,14 @@ return new class extends Migration
         Schema::create('casas', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug');
             $table->string('tipo_oferta');
             $table->string('tipo_inmueble');
             $table->string('estrato');
-            $table->string('direccion');
+            $table->texto('direccion');
             $table->string('departamento');
             $table->string('ciudad');
-            $table->string('descripcion');
+            $table->texto('descripcion');
             $table->string('baños');
             $table->string('parqueaderos');
             $table->string('pisos');

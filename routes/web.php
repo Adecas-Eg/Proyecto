@@ -48,7 +48,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/casa',[CasaController::class, 'index'])->name('casa.index');
 	Route::get('/casa/create',[CasaController::class, 'create'])->name('casa.create');
 	Route::post('/casa',[CasaController::class,'store'])->name('casa.store');
-	Route::get('/casa/{id}',[CasaController::class, 'show'])->name('casa.show');
+	Route::get('/casa/{casa}',[CasaController::class, 'show'])->name('casa.show');
 
 });
 

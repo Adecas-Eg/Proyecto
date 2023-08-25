@@ -13,8 +13,10 @@ class CasaController extends Controller
     public function index()
     {
 
-        $user = auth()->user();
-        return view('casas.index');
+        $casas = Casa::All();
+
+        
+        return view('casas.index', compact('casas'));
     }
 
     /**
@@ -64,9 +66,9 @@ class CasaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Casa $casa)
     {
-        //
+        return view('casas.show',compact('casa'));
     }
 
     /**

@@ -19,6 +19,6 @@ class Casa extends Model
         'baños',
         'parqueaderos',
         'pisos'
-
     ];
+
 }
