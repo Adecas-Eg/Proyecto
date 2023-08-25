@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('tipo_oferta');
             $table->string('tipo_inmueble');
             $table->string('estrato');
-            $table->texto('direccion');
+            $table->text('direccion');
             $table->string('departamento');
             $table->string('ciudad');
-            $table->texto('descripcion');
+            $table->text('descripcion');
             $table->string('baños');
             $table->string('parqueaderos');
             $table->string('pisos');
