@@ -22,7 +22,7 @@
 
             </div>
             {{-- comiezo del formulario --}}
-            <form action="{{ route('casa.store') }}" method="post" role="form">
+            <form action="{{ route('casa.store') }}" method="post" role="form" enctype="multipart/form-data">
 
                 @csrf
 
@@ -179,6 +179,17 @@
                                         <input class="form-control align-content-between" type="text" value="."
                                             name="pisos">
                                         @error('pisos')
+                                            <p class="text-danger text-xs pt-1"> {{ $message }} </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{-- cambiar a text area --}}
+                                        <label for="asas" class="form-control-label">N° Pisos</label>
+                                        <input class="form-control align-content-between" type="file" value="."
+                                            name="files[]" multiple>
+                                        @error('files')
                                             <p class="text-danger text-xs pt-1"> {{ $message }} </p>
                                         @enderror
                                     </div>

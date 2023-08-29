@@ -66,41 +66,78 @@
                         <div class="card-header pb-0 p-3">
                             <h6 class="mb-0">Informmacion</h6>
                         </div>
-                        <div class="card-body p-3">
+                        <div class="card-body  p-3">
                             <ul class="list-group">
                                 <li
                                     class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                                     <div class="d-flex align-items-center">
-                                        <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
+                                        <div class="icon icon-shape icon-sm me-3 bg-gradient-info shadow text-center">
+
                                             <i class="ni ni-world text-white opacity-10"></i>
                                         </div>
                                         <div class="d-flex flex-column">
                                             <h6 class="mb-1 text-dark text-sm">Ubicacion</h6>
                                         </div>
                                         <button
-                                        class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
-                                            class="ni ni-bold-right" aria-hidden="true"></i></button>
+                                            class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"
+                                            type="button" data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                class="ni ni-bold-right" aria-hidden="true"></i></button>
+
+                                        <ul class="dropdown-menu">
+
+
+                                            <li><a class="dropdown-item" href="#">Ciudad :</a></li>
+                                            <li><a class="dropdown-item" href="#">Dirreccion: </a></li>
+                                            <li><a class="dropdown-item" href="#">Codigo Postal</a></li>
+                                        </ul>
                                     </div>
+                                    
+
                                 </li>
-                                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                                <li
+                                    class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                                     <div class="d-flex align-items-center">
-                                        <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
+                                        <div class="icon icon-shape icon-sm me-3 bg-gradient-secondary shadow text-center">
+                                            <i class="ni ni-planet text-white opacity-10"></i>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <h6 class="mb-1 text-dark text-sm">Espacios</h6>
+                                        </div>
+                                        <button
+                                            class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"
+                                            type="button" data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                class="ni ni-bold-right" aria-hidden="true"></i></button>
+
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Baños :</a></li>
+                                            <li><a class="dropdown-item" href="#">Parqueaderos: </a></li>
+                                            <li><a class="dropdown-item" href="#">Otros: </a></li>
+                                        </ul>
+                                    </div>
+
+                                </li>
+                                <li
+                                    class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                                    <div class="d-flex align-items-center">
+                                        <div class="icon icon-shape icon-sm me-3 bg-gradient-info shadow text-center">
                                             <i class="ni ni-world text-white opacity-10"></i>
                                         </div>
-                                        <div class="d-flex flex-column dropend">
-                                            <h6 class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                Dropdown button
-                                            </h6>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                              </ul>
+                                        <div class="d-flex flex-column">
+                                            <h6 class="mb-1 text-dark text-sm">Ubicacion</h6>
                                         </div>
-                                        
+                                        <button
+                                            class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"
+                                            type="button" data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                class="ni ni-bold-right" aria-hidden="true"></i></button>
 
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Ciudad :</a></li>
+                                            <li><a class="dropdown-item" href="#">Dirreccion: </a></li>
+                                            <li><a class="dropdown-item" href="#">Codigo Postal</a></li>
+                                        </ul>
                                     </div>
-                            </li>
+
+                                </li>
                             </ul>
                         </div>
                     </div>

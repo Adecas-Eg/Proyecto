@@ -30,6 +30,12 @@ class User extends Authenticatable
         'about'
     ];
 
+
+    // /relacion uno amuchos
+    public function casas(){
+        return $this->hasMany('App\Models\Casa');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
