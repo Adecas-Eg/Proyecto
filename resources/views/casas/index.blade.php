@@ -67,7 +67,7 @@
                     @endforeach
                 </div>
             </div>
-
+            
 
 
             {{-- poner la api del mapa aqui  --}}

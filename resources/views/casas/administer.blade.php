@@ -7,6 +7,19 @@
 
     <div class="container-fluid py-4">
         <div class="row">
+            <div class="px-2 pt-2 col-md-10">
+                @if (session('status'))
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        <p class="text-white mb-0">{{ session('status') }}</p>
+                    </div>
+                @endif
+                @if ($message = session()->has('error'))
+                    <div class="alert alert-danger" role="alert">
+                        <p class="text-white mb-0">{{ session('status') }}</p>
+                    </div>
+                @endif
+
+            </div>
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">

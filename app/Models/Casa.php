@@ -13,18 +13,7 @@ class Casa extends Model implements HasMedia
 {
     use InteractsWithMedia;
     use HasFactory;
-    protected $fillable =[
-        'name',
-        'tipo_oferta',
-        'tipo_inmueble',
-        'direccion',
-        'ciudad',
-        'estrato',
-        'descripcion',
-        'baños',
-        'parqueaderos',
-        'pisos'
-    ];  
+    protected $guarded =[];  
 
 
     use HasSlug;

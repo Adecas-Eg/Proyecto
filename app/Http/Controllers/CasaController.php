@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCasa;
 use App\Models\Casa;
 use App\Models\User;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 
 class CasaController extends Controller
@@ -31,35 +33,9 @@ class CasaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Casa $casa)
+    public function store(StoreCasa $request)
     {
-
-        $request->validate([
-            'name' => 'required|max:255|min:2',
-            'tipo_oferta =>required|max:255',
-            'tipo_inmueble' => 'required|max:255',
-            'estrato' => 'required|max:255',
-            'direccion' => 'required|max:255',
-            'departamento' => 'required|max:255',
-            'ciudad' => 'required|max:255',
-            'descripcion' => 'required|max:255',
-        ]);
-        $casa = new Casa();
-
-        $casa->name = $request->input('name');
-        $casa->tipo_oferta = $request->input('tipo_oferta');
-        $casa->tipo_inmueble = $request->input('tipo_inmueble');
-        $casa->estrato = $request->input('estrato');
-        $casa->direccion = $request->input('direccion');
-        $casa->departamento = $request->input('departamento');
-        $casa->ciudad = $request->input('ciudad');
-        $casa->descripcion = $request->input('descripcion');
-        $casa->baños = $request->input('baños');
-        $casa->parqueaderos = $request->input('parqueaderos');
-        $casa->pisos = $request->input('pisos');
-        $casa->user_id= auth()->user()->id;
-
-
+        $casa = Casa::create($request->validated());
         //logica de multiples imagens con librerias
         if ($request->hasFile('files')) {
             $fileAdders = $casa->addMultipleMediaFromRequest(['files'])
@@ -68,9 +44,10 @@ class CasaController extends Controller
                 });
         }
 
-        $casa->save();
+        // $casa->save();
         //back se usa para regresar a la pagina anterior
-        return back()->with('status', 'Inmueble creado');
+         return back()->with('status', 'Inmueble creado');
+        
     }
 
     /**
@@ -79,7 +56,7 @@ class CasaController extends Controller
     public function show(Casa $casa)
     {
 
-        return view('casas.show', compact('casa','img1'));
+        return view('casas.show', compact('casa'));
     }
 
     /**
@@ -87,17 +64,17 @@ class CasaController extends Controller
      */
     public function edit(Casa $casa)
     {
-
-        
-         return view('casas.edit', compact('casa'));
+        return view('casas.edit', compact('casa'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreCasa $request, Casa $casa)
     {
-        //
+        $casa->update($request->validated());
+        
+        return  redirect('administer')->with('status','inmueble modificado');
     }
 
     /**
@@ -109,15 +86,13 @@ class CasaController extends Controller
     }
 
 
-    public function administer(){
+    public function administer()
+    {
 
         $user = User::find(auth()->user()->id);
 
-        $casas =$user->casas;
+        $casas = $user->casas;
 
-        return view('casas.administer',compact('casas'));
+        return view('casas.administer', compact('casas'));
     }
-
-
-
 }

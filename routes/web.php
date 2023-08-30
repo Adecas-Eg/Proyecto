@@ -51,6 +51,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/casa/{casa}/edit',[CasaController::class, 'show'])->name('casa.show');
 	Route::get('/administer',[CasaController::class, 'administer'])->name('casa.administer');
 	Route::get('/casa/{casa}',[CasaController::class, 'edit'])->name('casa.edit');
+	Route::patch('/casa/{casa}',[CasaController::class, 'update'])->name('casa.update');
 });
 
 Route::group(['middleware' => 'auth'], function () {
