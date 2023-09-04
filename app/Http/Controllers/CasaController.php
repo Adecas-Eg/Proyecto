@@ -17,8 +17,6 @@ class CasaController extends Controller
     {
 
         $casas = Casa::with(['media'])->get();
-
-
         return view('casas.index', compact('casas'));
     }
 
@@ -35,6 +33,7 @@ class CasaController extends Controller
      */
     public function store(StoreCasa $request)
     {
+        
         $casa = Casa::create($request->validated());
         //logica de multiples imagens con librerias
         if ($request->hasFile('files')) {
@@ -43,8 +42,9 @@ class CasaController extends Controller
                     $fileAdder->toMediaCollection('casas');
                 });
         }
+        $casa->user_id = auth()->user()->id;
 
-        // $casa->save();
+        $casa->save();
         //back se usa para regresar a la pagina anterior
          return back()->with('status', 'Inmueble creado');
         
@@ -92,6 +92,9 @@ class CasaController extends Controller
         $user = User::find(auth()->user()->id);
 
         $casas = $user->casas;
+
+        
+        
 
         return view('casas.administer', compact('casas'));
     }

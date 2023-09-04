@@ -50,7 +50,7 @@
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div>
-                                                    <img src="/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
+                                                    <img src="" class="avatar avatar-sm me-3" alt="user1">
                                                 </div>
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm">{{$casa->name}} </h6>
@@ -67,9 +67,9 @@
                                             <span class="text-secondary text-xs font-weight-bold">{{$casa->tipo_inmueble}}</span>
                                         </td>
                                         <td class="align-middle">
-                                            <a href="{{route('casa.edit',$casa)}}" class="text-secondary font-weight-bold text-xs"
-                                                data-toggle="tooltip" data-original-title="Edit user">
-                                                Edit
+                                            <a href="{{route('casa.edit',$casa)}}" class=" badge badge-sm bg-gradient-info  text-xs"
+                                                data-toggle="tooltip" data-original-title="Edit">
+                                                edit
                                             </a>
                                         </td>
                                     </tr>

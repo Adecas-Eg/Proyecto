@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="{{asset('assets/img/apple-icon.png')}}">
     <link rel="icon" type="image/png" href="{{asset('img/favicon. png')}}">
+    @livewireStyles
     <title>
         Nova Life
     </title>
@@ -16,9 +17,11 @@
     <link href="{{asset('assets/css/nucleo-svg.css')}}" rel="stylesheet" />
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    
     <link href="{{asset('assets/css/nucleo-svg.css')}}" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="{{asset('assets/css/argon-dashboard.css')}}" rel="stylesheet" />
+
 </head>
 
 <body class="{{ $class ?? '' }}">
@@ -42,10 +45,12 @@
                 <main class="main-content border-radius-lg">
                     @yield('content')
                 </main>
-            @include('components.fixed-plugin')
+            @can('dashboard')
+                @include('components.fixed-plugin')
+                
+            @endcan
         @endif
     @endauth
-
     <!--   Core JS Files   -->
     <script src="{{asset('assets/js/core/popper.min.js')}}"></script>
     <script src="{{asset('assets/js/core/bootstrap.min.js')}}"></script>
@@ -67,6 +72,8 @@
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{asset('assets/js/argon-dashboard.js')}}"></script>
     @stack('js');
+    @livewireScripts
+
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl
-        {{ str_contains(Request::url(), 'virtual-reality') == true ? ' mt-3 mx-3 bg-primary' : '' }}" id="navbarBlur"
-        data-scroll="false">
+        {{ str_contains(Request::url(), 'virtual-reality') == true ? ' mt-3 mx-3 bg-primary' : '' }}"
+    id="navbarBlur" data-scroll="false">
     <div class="container-fluid py-1 px-3">
 
         {{-- Nav de la pagina en que esta  --}}
@@ -15,7 +15,7 @@
 
 
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-            
+
 
             {{-- div del buscador  --}}
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -24,7 +24,7 @@
                     <input type="text" class="form-control" placeholder="Type here...">
                 </div>
             </div>
-            
+
 
             {{-- lista --}}
             <ul class="navbar-nav  justify-content-end">
@@ -51,14 +51,16 @@
                         </div>
                     </a>
                 </li>
-                
+
                 <li class="nav-item px-3 d-flex align-items-center">
                     {{-- boto nde configurancion y notificacion --}}
-                <li class="nav-item px-3 d-flex align-items-center">
-                    <a href="javascript:;" class="nav-link text-white p-0">
-                        <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-                    </a>
-                </li>
+                    @can('dashboard')
+                    <li class="nav-item px-3 d-flex align-items-center">
+                        <a href="javascript:;" class="nav-link text-white p-0">
+                            <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+                        </a>
+                    </li>
+                @endcan
 
 
                 {{-- desplegable de notificacion --}}
@@ -71,12 +73,12 @@
                     <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
                         aria-labelledby="dropdownMenuButton">
 
-                        {{-- primera notificacion aqui aplicar un forech y determinar los comentarios de las casas--}}
+                        {{-- primera notificacion aqui aplicar un forech y determinar los comentarios de las casas --}}
                         <li class="mb-2">
                             <a class="dropdown-item border-radius-md" href="javascript:;">
                                 <div class="d-flex py-1">
                                     <div class="my-auto">
-                                        <img src="{{asset('./img/team-2.jpg')}}" class="avatar avatar-sm  me-3 ">
+                                        <img src="{{ asset('./img/team-2.jpg') }}" class="avatar avatar-sm  me-3 ">
                                     </div>
                                     <div class="d-flex flex-column justify-content-center">
                                         <h6 class="text-sm font-weight-normal mb-1">
@@ -90,7 +92,7 @@
                                 </div>
                             </a>
                         </li>
-                        
+
                     </ul>
                 </li>
             </ul>

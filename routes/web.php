@@ -28,8 +28,9 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
-use App\Http\Controllers\ChangePassword;            
-            
+use App\Http\Controllers\ChangePassword;
+use App\Http\Controllers\UserController;
+
 Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
 	
 	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
@@ -52,6 +53,14 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/administer',[CasaController::class, 'administer'])->name('casa.administer');
 	Route::get('/casa/{casa}',[CasaController::class, 'edit'])->name('casa.edit');
 	Route::patch('/casa/{casa}',[CasaController::class, 'update'])->name('casa.update');
+});
+
+Route::group(['middleware' => 'auth'],function() {
+	Route::get('/users',[UserController::class, 'index'])->name('users.index');
+	Route::post('/users',[UserController::class,'store'])->name('users.store');
+	Route::get('/users/{user}',[UserController::class, 'edit'])->name('users.edit');
+	Route::put('/users/{user}',[UserController::class, 'update'])->name('users.update');
+
 });
 
 Route::group(['middleware' => 'auth'], function () {

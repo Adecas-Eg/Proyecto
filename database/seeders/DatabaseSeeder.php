@@ -15,12 +15,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'username' => 'admin',
-            'firstname' => 'Admin',
-            'lastname' => 'Admin',
-            'email' => 'admin@argon.com',
-            'password' => bcrypt('secret')
-        ]);
+
+        $this->call(RolSeeder::class);
+        $this->call(UserSeeder::class);
+
+        
+        // DB::table('users')->insert([
+        //     'username' => 'admin',
+        //     'firstname' => 'Admin',
+        //     'lastname' => 'Admin',
+        //     'email' => 'admin@argon.com',
+        //     'password' => bcrypt('secret')
+        // ]);
     }
 }

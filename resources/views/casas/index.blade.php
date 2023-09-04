@@ -55,7 +55,7 @@
                                             <p>{{ $casa->descripcion }}</p>
                                         </div>
                                         <div class="h6 mt-4">
-                                            <i class="ni business_briefcase-24 mr-2">Precio:     </i>
+                                            <i class="ni business_briefcase-24 mr-2">Precio:   </i>
                                         </div>
                                         <div class="h6 mt-4">
                                             <a href="{{route('casa.show',$casa)}}" class="btn btn-sm btn-primary"><i class=" fa fa-search-plus"></i></a>
