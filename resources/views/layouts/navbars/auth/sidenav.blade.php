@@ -6,10 +6,10 @@
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href="{{ route('home') }}" target="_blank">
+        <a class="navbar-brand m-0" href="{{ route('home') }}">
             {{-- //IMAGEN Y LOGO --}}
             <img src="{{ asset('./img/logo-ct-dark.png') }}" class="navbar-brand-img h-100" alt="main_logo">
-            <span class="ms-1 font-weight-bold">ED</span>
+            <span class="ms-1 font-weight-bold"> NOVA LIFA :)</span>
         </a>
     </div>
 
@@ -22,8 +22,8 @@
             {{-- DASHBOARD DE ADMINISTRADOR --}}
             @can('dashboard')
                 <li class="nav-item">
-                    <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'active' : '' }}"
-                        href="{{ route('home') }}">
+                    <a class="nav-link {{ Route::currentRouteName() == 'dashboard' ? 'active' : '' }}"
+                        href="{{ route('dashboard') }}">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
@@ -85,6 +85,21 @@
                 </div>
                 <h6 class="ms-2 text-uppercase text-xs font-weight-bolder opacity-6 mb-0">Inmuebles</h6>
             </li>
+
+            @can('casa.index')
+                <li class="nav-item">
+
+                    {{-- sabe si el link esta activo o no realiza una peticion al url y si esta activo lo muestra cambar a la otra pagimnna --}}
+                    <a class="nav-link {{ str_contains(request()->url(), 'casa') == true ? 'active' : '' }}"
+                        href="{{ route('casa.index') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-shop text-warning text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Inmuebles</span>
+                    </a>
+                </li>
+            @endcan
 
 
 

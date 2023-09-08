@@ -24,6 +24,6 @@ class RegisterController extends Controller
         $user->roles()->sync(1);
         auth()->login($user);
 
-        return redirect('/dashboard');
+        return redirect()->route('casa.index');
     }
 }

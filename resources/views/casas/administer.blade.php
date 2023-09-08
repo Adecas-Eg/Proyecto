@@ -32,7 +32,8 @@
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Names</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Tipo de Oferta</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -44,36 +45,42 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
-                                    @foreach ($casas as $casa )
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex px-2 py-1">
-                                                <div>
-                                                    <img src="" class="avatar avatar-sm me-3" alt="user1">
+
+                                    @foreach ($casas as $casa)
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div>
+                                                        @if ($casa->getMedia() != null)
+                                                        {{-- arreglar mostrar la primera imagen  --}}
+                                                            <img src="{{$casa->getMedia('casas')->first()->getUrl('thumb')}}"
+                                                                class="avatar avatar-sm me-3" alt="user1">
+                                                        @endif
+                                                    </div>
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-sm">{{ $casa->name }} </h6>
+                                                    </div>
                                                 </div>
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{$casa->name}} </h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p class="text-xs font-weight-bold mb-0">{{$casa->tipo_oferta}}</p>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <span class="badge badge-sm bg-gradient-success">estado añadir manejo de estados</span>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">{{$casa->tipo_inmueble}}</span>
-                                        </td>
-                                        <td class="align-middle">
-                                            <a href="{{route('casa.edit',$casa)}}" class=" badge badge-sm bg-gradient-info  text-xs"
-                                                data-toggle="tooltip" data-original-title="Edit">
-                                                edit
-                                            </a>
-                                        </td>
-                                    </tr>
-                                        
+                                            </td>
+                                            <td>
+                                                <p class="text-xs font-weight-bold mb-0">{{ $casa->tipo_oferta }}</p>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="badge badge-sm bg-gradient-success">estado añadir manejo de
+                                                    estados</span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <span
+                                                    class="text-secondary text-xs font-weight-bold">{{ $casa->tipo_inmueble }}</span>
+                                            </td>
+                                            <td class="align-middle">
+                                                <a href="{{ route('casa.edit', $casa) }}"
+                                                    class=" badge badge-sm bg-gradient-info  text-xs" data-toggle="tooltip"
+                                                    data-original-title="Edit">
+                                                    edit
+                                                </a>
+                                            </td>
+                                        </tr>
                                     @endforeach
 
                                 </tbody>

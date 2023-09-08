@@ -9,7 +9,7 @@
         <div class="row">
             {{-- muestra que el inmueble fue creatdo satisfactoriamente --}}
             <div class="px-2 pt-2 col-md-10">
-                @if (session('status'))
+                @if (session('status'))a
                     <div class="alert alert-info alert-dismissible fade show" role="alert">
                         <p class="text-white mb-0">{{ session('status') }}</p>
                     </div>
@@ -187,9 +187,9 @@
                                     <div class="form-group">
                                         {{-- cambiar a text area --}}
                                         <label for="asas" class="form-control-label">N° Pisos</label>
-                                        <input class="form-control align-content-between" type="file" value="."
-                                            name="files[]" multiple>
-                                        @error('files')
+                                        <input class="form-control align-content-between" type="file" 
+                                            name="imagenes[]" multiple>
+                                        @error('imagenes')
                                             <p class="text-danger text-xs pt-1"> {{ $message }} </p>
                                         @enderror
                                     </div>

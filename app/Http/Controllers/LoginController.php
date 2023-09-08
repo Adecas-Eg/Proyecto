@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -16,7 +17,9 @@ class LoginController extends Controller
      */
     public function show()
     {
-        return view('auth.login');
+
+        //redirecciona para la ruta principal acomodar la ruta princiapla
+        return view('auth.register');
     }
 
     public function login(Request $request)
@@ -29,7 +32,17 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $request->session()->regenerate();
 
-            return redirect()->intended('dashboard');
+            $user = auth()->user();
+
+            //recuperara los roles y redireccionar a cada ruta
+            foreach($user->roles as $role) {
+                if($role->name == "admin"){
+                    return redirect()->intended('dashboard');
+                    
+                }else {
+                    return redirect()->intended('casa');
+                }
+            }
         }
 
         return back()->withErrors([

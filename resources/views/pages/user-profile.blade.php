@@ -4,25 +4,20 @@
     @include('layouts.navbars.auth.topnav', ['title' => 'Your Profile'])
 
     <div class="px-2 pt-2 col-md-10">
-    <div class="card shadow-lg mx-4 card-profile-bottom">
-        <div class="card-body p-3">
-            <div class="row gx-4">
-                <div class="col-auto">
-                    <div class="avatar avatar-xl position-relative">
-                        <img src="/img/team-1.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+        <div class="card shadow-lg mx-4 card-profile-bottom">
+            <div class="card-body p-3">
+                <div class="row gx-4">
+                    <div class="col-auto my-auto">
+                        <div class="h-100">
+                            <h5 class="mb-1">
+                                {{ auth()->user()->firstname ?? 'Firstname' }} {{ auth()->user()->lastname ?? 'Lastname' }}
+                            </h5>
+                            <p class="mb-0 font-weight-bold text-sm">
+                                Public Relations
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="col-auto my-auto">
-                    <div class="h-100">
-                        <h5 class="mb-1">
-                            {{ auth()->user()->firstname ?? 'Firstname' }} {{ auth()->user()->lastname ?? 'Lastname' }}
-                        </h5>
-                        <p class="mb-0 font-weight-bold text-sm">
-                            Public Relations
-                        </p>
-                    </div>
-                </div>
-                {{-- <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+                    {{-- <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
                     {{-- <div class="nav-wrapper position-relative end-0">
                         <ul class="nav nav-pills nav-fill p-1" role="tablist">
                             <li class="nav-item">
@@ -49,23 +44,23 @@
                         </ul> 
                     </div>
                 </div> --}}
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container-fluid py-4">
-        <div class="row">
-            @if (session('status'))
-            <div class="alert alert-info alert-dismissible fade show" role="alert">
-                <p class="text-white mb-0">{{ session('status') }}</p>
-            </div>
-        @endif
-        @if ($message = session()->has('error'))
-            <div class="alert alert-danger" role="alert">
-                <p class="text-white mb-0">{{ session('status') }}</p>
-            </div>
-        @endif
+        <div class="container-fluid py-4">
+            <div class="row">
+                @if (session('status'))
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        <p class="text-white mb-0">{{ session('status') }}</p>
+                    </div>
+                @endif
+                @if ($message = session()->has('error'))
+                    <div class="alert alert-danger" role="alert">
+                        <p class="text-white mb-0">{{ session('status') }}</p>
+                    </div>
+                @endif
 
-    </div>
+            </div>
             <div class="col-md-10">
                 <div class="card">
                     <form role="form" method="POST" action={{ route('profile.update') }} enctype="multipart/form-data">
@@ -82,25 +77,29 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Username</label>
-                                        <input class="form-control" type="text" name="username" value="{{ old('username', auth()->user()->username) }}">
+                                        <input class="form-control" type="text" name="username"
+                                            value="{{ old('username', auth()->user()->username) }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Email address</label>
-                                        <input class="form-control" type="email" name="email" value="{{ old('email', auth()->user()->email) }}">
+                                        <input class="form-control" type="email" name="email"
+                                            value="{{ old('email', auth()->user()->email) }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">First name</label>
-                                        <input class="form-control" type="text" name="firstname"  value="{{ old('firstname', auth()->user()->firstname) }}">
+                                        <input class="form-control" type="text" name="firstname"
+                                            value="{{ old('firstname', auth()->user()->firstname) }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Last name</label>
-                                        <input class="form-control" type="text" name="lastname" value="{{ old('lastname', auth()->user()->lastname) }}">
+                                        <input class="form-control" type="text" name="lastname"
+                                            value="{{ old('lastname', auth()->user()->lastname) }}">
                                     </div>
                                 </div>
                             </div>
@@ -117,19 +116,22 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">City</label>
-                                        <input class="form-control" type="text" name="city" value="{{ old('city', auth()->user()->city) }}">
+                                        <input class="form-control" type="text" name="city"
+                                            value="{{ old('city', auth()->user()->city) }}">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Country</label>
-                                        <input class="form-control" type="text" name="country" value="{{ old('country', auth()->user()->country) }}">
+                                        <input class="form-control" type="text" name="country"
+                                            value="{{ old('country', auth()->user()->country) }}">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Postal code</label>
-                                        <input class="form-control" type="text" name="postal" value="{{ old('postal', auth()->user()->postal) }}">
+                                        <input class="form-control" type="text" name="postal"
+                                            value="{{ old('postal', auth()->user()->postal) }}">
                                     </div>
                                 </div>
                             </div>
@@ -147,7 +149,7 @@
                         </div>
                     </form>
                 </div>
-            </div> 
+            </div>
         </div>
         @include('layouts.footers.auth.footer')
     </div>

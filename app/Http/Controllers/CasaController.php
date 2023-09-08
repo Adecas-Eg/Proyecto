@@ -8,8 +8,19 @@ use App\Models\User;
 use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 
+
 class CasaController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can:casa.index')->only('index');
+        $this->middleware('can:casa.create')->only('create');
+        $this->middleware('can:casa.store')->only('store');
+        $this->middleware('can:casa.edit')->only('edit');
+        $this->middleware('can:casa.update')->only('update');
+        $this->middleware('can:casa.administer')->only('administer');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -17,6 +28,8 @@ class CasaController extends Controller
     {
 
         $casas = Casa::with(['media'])->get();
+
+        // return $casas;
         return view('casas.index', compact('casas'));
     }
 
@@ -33,21 +46,19 @@ class CasaController extends Controller
      */
     public function store(StoreCasa $request)
     {
-        
         $casa = Casa::create($request->validated());
         //logica de multiples imagens con librerias
-        if ($request->hasFile('files')) {
-            $fileAdders = $casa->addMultipleMediaFromRequest(['files'])
+        $casa->user_id = auth()->user()->id;
+        $casa->save();
+
+        if (request()->hasFile('imagenes')) {
+            $casa->addMultipleMediaFromRequest(['imagenes'])
                 ->each(function ($fileAdder) {
                     $fileAdder->toMediaCollection('casas');
                 });
         }
-        $casa->user_id = auth()->user()->id;
-
-        $casa->save();
         //back se usa para regresar a la pagina anterior
-         return back()->with('status', 'Inmueble creado');
-        
+        return back()->with('status', 'Inmueble creado');
     }
 
     /**
@@ -55,7 +66,7 @@ class CasaController extends Controller
      */
     public function show(Casa $casa)
     {
-
+        $a = $casa->with(['media'])->find($casa->id);
         return view('casas.show', compact('casa'));
     }
 
@@ -73,8 +84,8 @@ class CasaController extends Controller
     public function update(StoreCasa $request, Casa $casa)
     {
         $casa->update($request->validated());
-        
-        return  redirect('administer')->with('status','inmueble modificado');
+
+        return  redirect('administer')->with('status', 'inmueble modificado');
     }
 
     /**
@@ -90,11 +101,10 @@ class CasaController extends Controller
     {
 
         $user = User::find(auth()->user()->id);
-
         $casas = $user->casas;
-
-        
-        
+        foreach ($casas as $casa){
+            $a[] = $casa->with(['media'])->find($casa->id);
+        }
 
         return view('casas.administer', compact('casas'));
     }

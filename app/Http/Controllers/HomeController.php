@@ -23,6 +23,15 @@ class HomeController extends Controller
      */
     public function index()
     {
+        return redirect()->route('casa.index');
+    }
+
+    public function dashboard()
+    {
         return view('pages.dashboard');
+    }
+
+    public function princ(){
+        return  view('home');
     }
 }

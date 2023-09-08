@@ -8,6 +8,48 @@
         <div class="row">
             <div class="row mt-4">
                 <div class="col-lg-7 mb-lg-0 mb-4">
+                    <div class="card card-carousel overflow-hidden h-100 p-0 ">
+                        <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
+                            <div class="carousel-inner border radius-lg h-100">
+                                <div class="carousel-item h-100 active"
+                                    style="background-image: url({{ $casa->getMedia('casas')->first()->getUrl('thumb') }});background-size: cover;">
+                                    <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
+                                        <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
+                                            <i class="ni ni-camera-compact text-dark opacity-10"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item h-100"
+                                    style="background-image: url({{ $casa->getMedia('casas')->last()->getUrl('thumb') }}); background-size: cover;">
+                                    <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
+                                        <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
+                                            <i class="ni ni-bulb-61 text-dark opacity-10"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                    
+                                
+                            </div>
+                        </div>
+
+
+                        <div>
+                            <button class="carousel-control-prev w-5 me-3" type="button"
+                                data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next w-5 me-3" type="button"
+                                data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                {{-- <div class="col-lg-7 mb-lg-0 mb-4">
                     <div class="card card-carousel overflow-hidden h-100 p-0">
                         <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
                             <div class="carousel-inner border-radius-lg h-100">
@@ -46,6 +88,8 @@
                                     </div>
                                 </div>
                             </div>
+
+                            botones de carrosul
                             <button class="carousel-control-prev w-5 me-3" type="button"
                                 data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -58,7 +102,7 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 {{-- datos estras de la casa --}}
                 <div class="col-lg-5">
@@ -91,7 +135,7 @@
                                             <li><a class="dropdown-item" href="#">Codigo Postal</a></li>
                                         </ul>
                                     </div>
-                                    
+
 
                                 </li>
                                 <li
@@ -143,6 +187,7 @@
                     </div>
                 </div>
             </div>
+
             @include('layouts.footers.auth.footer')
         </div>
     @endsection
