@@ -7,6 +7,14 @@
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-md-8">
+            <form class="form">
+                <div class="input-group">
+                    <input type="text" name="buscar" class="form-control" placeholder="Ubicacion"  value="{{$buscar}}">
+                    <button class="input-group-text text-body bg-info"><i class="fas fa-search text-white"
+                        aria-hidden="true"></i></button>
+                </div>
+            </form>
+
                 <div class="row">
                     <div class="col-md-4 m-4">
                         <div class="card card-profile">

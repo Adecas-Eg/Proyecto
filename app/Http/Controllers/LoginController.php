@@ -19,7 +19,7 @@ class LoginController extends Controller
     {
 
         //redirecciona para la ruta principal acomodar la ruta princiapla
-        return view('auth.register');
+        return view('auth.login');
     }
 
     public function login(Request $request)

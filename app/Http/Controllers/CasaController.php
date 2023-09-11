@@ -21,16 +21,27 @@ class CasaController extends Controller
         $this->middleware('can:casa.update')->only('update');
         $this->middleware('can:casa.administer')->only('administer');
     }
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
+   
 
-        $casas = Casa::with(['media'])->get();
+
+
+    public function home(){
+        
+        if(Auth()->user() == null){
+            return view('casas.home_guest');
+        }else{
+            return view('casas.home');
+        }
+       
+    }
+    public function index(Request $request)
+    {
+        $buscar  = $request->buscar;
+
+        $casas = Casa::with(['media'])->where('name','like','%'.$buscar.'%')->get();
 
         // return $casas;
-        return view('casas.index', compact('casas'));
+        return view('casas.index', compact('casas','buscar'));
     }
 
     /**
@@ -108,4 +119,5 @@ class CasaController extends Controller
 
         return view('casas.administer', compact('casas'));
     }
+
 }
