@@ -51,11 +51,10 @@
                                             <td>
                                                 <div class="d-flex px-2 py-1">
                                                     <div>
-                                                        @if ($casa->getMedia() != null)
+
                                                         {{-- arreglar mostrar la primera imagen  --}}
-                                                            <img src="{{$casa->getMedia('casas')->first()->getUrl('thumb')}}"
-                                                                class="avatar avatar-sm me-3" alt="user1">
-                                                        @endif
+                                                        <img src="{{ $casa->getMedia('casas')->first()->getUrl('thumb') }}"
+                                                            class="avatar avatar-sm me-3" alt="user1">
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center">
                                                         <h6 class="mb-0 text-sm">{{ $casa->name }} </h6>
@@ -66,8 +65,14 @@
                                                 <p class="text-xs font-weight-bold mb-0">{{ $casa->tipo_oferta }}</p>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <span class="badge badge-sm bg-gradient-success">estado añadir manejo de
-                                                    estados</span>
+                                                @if ($casa->status == 1)
+                                                    {{-- se puede poner un modal para confirmar --}}
+                                                    <a href="{{ route('change_status', $casa) }}"><span
+                                                            class="badge badge-sm bg-gradient-success"> Activo </span></a>
+                                                @else
+                                                    <a href="{{ route('change_status', $casa) }}"><span
+                                                            class="badge badge-sm bg-gradient-dark"> Inactivo </span></a>
+                                                @endif
                                             </td>
                                             <td class="align-middle text-center">
                                                 <span

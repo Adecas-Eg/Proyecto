@@ -74,8 +74,9 @@
                         </div>
                     @endforeach
                 </div>
+              
             </div>
-            
+            {{$casas->links()}}
 
 
             {{-- poner la api del mapa aqui  --}}

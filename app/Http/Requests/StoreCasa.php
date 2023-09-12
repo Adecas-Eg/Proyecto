@@ -32,7 +32,9 @@ class StoreCasa extends FormRequest
             'descripcion' => 'required|max:255',
             'baños' => 'required|max:255',
             'parqueaderos' => 'required|max:255',
-            'pisos' => 'required|max:255'
+            'pisos' => 'required|max:255',
+            'precio'=>'required'
+            
         ];
     }
 }

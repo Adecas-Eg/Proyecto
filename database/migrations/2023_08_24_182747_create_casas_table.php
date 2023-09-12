@@ -25,6 +25,10 @@ return new class extends Migration
             $table->string('baños');
             $table->string('parqueaderos');
             $table->string('pisos');
+            $table->integer('status')->nullable();
+            $table->string('precio')->nullable();
+            $table->string('google_id')->nullable();
+
             $table->unsignedBigInteger('user_id')->nullable();
 
 

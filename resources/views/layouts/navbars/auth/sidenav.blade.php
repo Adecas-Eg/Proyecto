@@ -107,7 +107,7 @@
                 <li class="nav-item">
 
                     {{-- sabe si el link esta activo o no realiza una peticion al url y si esta activo lo muestra cambar a la otra pagimnna --}}
-                    <a class="nav-link {{ str_contains(request()->url(), 'casa') == true ? 'active' : '' }}"
+                    <a class="nav-link {{ str_contains(request()->url(), 'casa/create') == true ? 'active' : '' }}"
                         href="{{ route('casa.create') }}">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">

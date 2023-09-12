@@ -21,7 +21,7 @@
                 </div>
                 <div class="col-lg-10 text-center mt-5 pt-3">
                     <div class=" ">
-                        <form action="" class="form">
+                        <form action="{{route('casa.index')}}" method="get" class="form">
                             <div class="input-group   ">
                                 <input type="text" name="buscar"  class="form-control border border-primary" placeholder="Ubicacion">
     

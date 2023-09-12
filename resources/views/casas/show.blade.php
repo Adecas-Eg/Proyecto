@@ -187,7 +187,7 @@
                     </div>
                 </div>
             </div>
-
+            <iframe width="560" height="315" src="https://virtualitour.es/tours/awTkD6AJQ6HzA5xAu7o7?autoLoad=false" frameborder="0" allowfullscreen></iframe>
             @include('layouts.footers.auth.footer')
         </div>
     @endsection

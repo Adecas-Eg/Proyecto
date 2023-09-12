@@ -54,12 +54,15 @@ Route::get('/principals', [CasaController::class, 'home'])->name('casa.home');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/casa', [CasaController::class, 'index'])->name('casa.index');
+	Route::get('/casa/filter', [CasaController::class, 'index'])->name('casa.filter');
+
 	Route::get('/casa/create', [CasaController::class, 'create'])->name('casa.create');
 	Route::post('/casa', [CasaController::class, 'store'])->name('casa.store');
 	Route::get('/casa/{casa}/edit', [CasaController::class, 'show'])->name('casa.show');
 	Route::get('/administer', [CasaController::class, 'administer'])->name('casa.administer');
 	Route::get('/casa/{casa}', [CasaController::class, 'edit'])->name('casa.edit');
 	Route::patch('/casa/{casa}', [CasaController::class, 'update'])->name('casa.update');
+	Route::get('/change_status/{casa}', [CasaController::class,'change_status'])->name('change_status');
 });
 
 Route::group(['middleware' => 'auth'], function () {

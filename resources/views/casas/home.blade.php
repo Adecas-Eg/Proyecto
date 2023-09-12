@@ -21,6 +21,7 @@
                 <div class="col-lg-10 text-center mx-auto mt-5 pt-3">
                     <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                         <div class="input-group   ">
+                            <input type="text" name="buscar"  class="form-control border border-primary" placeholder="Ubicacion">
 
                             <button type="button" class="form-control border border-primary dropdown-toggle"
                                 data-bs-toggle="dropdown" aria-expanded="false">

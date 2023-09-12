@@ -1,7 +1,7 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Casa - '. $casa->name])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Casa - ' . $casa->name])
 
 
     <div class="container-fluid py-4">
@@ -22,7 +22,7 @@
 
             </div>
             {{-- comiezo del formulario --}}
-            <form action="{{ route('casa.update',$casa) }}" method="post" role="form" enctype="multipart/form-data">
+            <form action="{{ route('casa.update', $casa) }}" method="post" role="form" enctype="multipart/form-data">
                 @method('patch')
                 @csrf
                 <div class="col-md-10">
@@ -35,7 +35,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Nombre</label>
-                                        <input class="form-control" type="text" name="name" value="{{$casa->name}}">
+                                        <input class="form-control" type="text" name="name"
+                                            value="{{ $casa->name }}">
                                         @error('name')
                                             <p class="text-danger text-xs pt-1"> {{ $message }} </p>
                                         @enderror
@@ -48,11 +49,9 @@
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Tipo de oferta</label>
                                         <select class="form-select" aria-label="Default select example" name="tipo_oferta"
-                                        value="{{$casa->tipo_oferta}}">
-                                            <option selected>Seleccionar</option>
-                                            <option value="Venta">Venta</option>
-                                            <option value="Arriendo">Arriendo</option>
-                                            <option value="Alquiler">Alquiler</option>
+                                            value="{{ $casa->tipo_oferta }}">
+                                            <option value="venta" @if( $casa->tipo_oferta === "venta" ) selected @endif >Venta</option>
+                                            <option value="arriendo" @if( $casa->tipo_oferta === "arriendo" ) selected @endif >Arriendo</option>
                                         </select>
                                         @error('tipo_oferta')
                                             <p class="text-danger text-xs pt-1"> {{ $message }} </p>
@@ -64,13 +63,15 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Tipo Inmueble</label>
-                                        <select class="form-select" aria-label="Default select example"
-                                            name="tipo_inmueble" value="{{$casa->tipo_inmueble}}">
-                                            <option selected>Seleccionar</option>
-                                            <option value="Apartamento">Apartamento</option>
-                                            <option value="Casa">Casa</option>
-                                            <option value="Local">Local</option>
-                                            <option value="Lote">Lote</option>
+                                        <select class="form-select" aria-label="Default select example" name="tipo_inmueble"
+                                            value="{{ $casa->tipo_inmueble }}">
+                                            <option value="casa" @if( $casa->tipo_inmueble === "casa" ) selected @endif >Casa</option>
+                                            <option value="apartamento" @if( $casa->tipo_inmueble === "apartamento" ) selected @endif >Apartamento</option>
+                                            <option value="local" @if( $casa->tipo_inmueble === "local" ) selected @endif >Local</option>
+                                            <option value="lote" @if( $casa->tipo_inmueble === "lote" ) selected @endif >Lote</option>
+                                            <option value="venta" @if( $casa->tipo_inmueble === "venta" ) selected @endif >Venta</option>
+                                            <option value="venta" @if( $casa->tipo_inmueble === "venta" ) selected @endif >Venta</option>
+
                                             @error('tipo_inmueble')
                                                 <p class="text-danger text-xs pt-1"> {{ $message }} </p>
                                             @enderror
@@ -81,11 +82,15 @@
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Estrato</label>
-                                        <select class="form-select" aria-label="Default select example" name="estrato" value="{{$casa->estrato}}">
-                                            <option selected>0</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
+                                        <select class="form-select" aria-label="Default select example" name="estrato"
+                                            value="{{ $casa->estrato }}">
+
+                                            <option value="1" @if( $casa->estrato === "1" ) selected @endif >1</option>
+
+                                            <option value="2" @if( $casa->estrato === "2" ) selected @endif >2</option>
+
+                                            <option value="3" @if( $casa->estrato === "3" ) selected @endif >3</option>
+
                                         </select>
                                         @error('estrato')
                                             <p class="text-danger text-xs pt-1"> {{ $message }} </p>
@@ -100,7 +105,8 @@
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Direccion</label>
                                         <input class="form-control" type="text"
-                                            value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" name="direccion" value="{{$casa->direccion}}">
+                                            value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" name="direccion"
+                                            value="{{ $casa->direccion }}">
                                         @error('direccion')
                                             <p class="text-danger text-xs pt-1"> {{ $message }} </p>
                                         @enderror
@@ -110,7 +116,8 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Departamento</label>
-                                        <input class="form-control" type="text" value="New York" name="departamento" value="{{$casa->departamento}}">
+                                        <input class="form-control" type="text" value="New York" name="departamento"
+                                            value="{{ $casa->departamento }}">
                                         @error('departamento')
                                             <p class="text-danger text-xs pt-1"> {{ $message }} </p>
                                         @enderror
@@ -119,7 +126,8 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Ciudad</label>
-                                        <input class="form-control" type="text" name="ciudad" value="{{$casa->ciudad}}">
+                                        <input class="form-control" type="text" name="ciudad"
+                                            value="{{ $casa->ciudad }}">
                                         @error('ciudad')
                                             <p class="text-danger text-xs pt-1"> {{ $message }} </p>
                                         @enderror
@@ -136,7 +144,7 @@
                                         <label for="example-text-input" class="form-control-label">Descripcion</label>
                                         <input class="form-control" type="text"
                                             value="A beautiful Dashboard for Bootstrap 5. It is Free and Open Source."
-                                            name="descripcion" value="{{$casa->descripcion}}">
+                                            name="descripcion" value="{{ $casa->descripcion }}">
                                         @error('descripcion')
                                             <p class="text-danger text-xs pt-1"> {{ $message }} </p>
                                         @enderror
@@ -153,7 +161,7 @@
                                         {{-- cambiar amunto o decremento --}}
                                         <label class="form-control-label">N° Baños</label>
                                         <input class="form-control align-content-between" type="text" value="."
-                                            name="baños" value="{{$casa->baños}}">
+                                            name="baños" value="{{ $casa->baños }}">
                                         @error('baños')
                                             <p class="text-danger text-xs pt-1"> {{ $message }} </p>
                                         @enderror
@@ -165,7 +173,7 @@
                                         {{-- cambiar a text area --}}
                                         <label for="asas" class="form-control-label">N° Parqueaderos</label>
                                         <input class="form-control align-content-between" type="text" value="."
-                                            name="parqueaderos" value="{{$casa->parqueaderos}}">
+                                            name="parqueaderos" value="{{ $casa->parqueaderos }}">
                                         @error('parqueaderos')
                                             <p class="text-danger text-xs pt-1"> {{ $message }} </p>
                                         @enderror
@@ -177,7 +185,7 @@
                                         {{-- cambiar a text area --}}
                                         <label for="asas" class="form-control-label">N° Pisos</label>
                                         <input class="form-control align-content-between" type="text" value="."
-                                            name="pisos" value="{{$casa->pisos}}">
+                                            name="pisos" value="{{ $casa->pisos }}">
                                         @error('pisos')
                                             <p class="text-danger text-xs pt-1"> {{ $message }} </p>
                                         @enderror

@@ -21,27 +21,29 @@ class CasaController extends Controller
         $this->middleware('can:casa.update')->only('update');
         $this->middleware('can:casa.administer')->only('administer');
     }
-   
 
 
 
-    public function home(){
-        
-        if(Auth()->user() == null){
+
+    public function home()
+    {
+
+        if (Auth()->user() == null) {
             return view('casas.home_guest');
-        }else{
+        } else {
             return view('casas.home');
         }
-       
     }
     public function index(Request $request)
     {
+
+        NHjdooHzRn9KPiXIB3u-bluOKVDmYwNpJshqKJIauRpjXMz_4BkTUsvP7RfdSTolCvA
         $buscar  = $request->buscar;
 
-        $casas = Casa::with(['media'])->where('name','like','%'.$buscar.'%')->get();
+        $casas = Casa::with(['media'])->where('name', 'like', '%' . $buscar . '%')->where('status', 'like', '1')->paginate(1);
 
         // return $casas;
-        return view('casas.index', compact('casas','buscar'));
+        return view('casas.index', compact('casas', 'buscar'));
     }
 
     /**
@@ -60,6 +62,7 @@ class CasaController extends Controller
         $casa = Casa::create($request->validated());
         //logica de multiples imagens con librerias
         $casa->user_id = auth()->user()->id;
+        $casa->status = 1;
         $casa->save();
 
         if (request()->hasFile('imagenes')) {
@@ -112,12 +115,23 @@ class CasaController extends Controller
     {
 
         $user = User::find(auth()->user()->id);
-        $casas = $user->casas;
-        foreach ($casas as $casa){
-            $a[] = $casa->with(['media'])->find($casa->id);
+        $casas1 = $user->casas;
+        foreach ($casas1 as $casa) {
+            $casas[] = $casa->with(['media'])->find($casa->id);
         }
-
+        // return  $casas;
         return view('casas.administer', compact('casas'));
     }
 
+
+    public function change_status(Casa $casa)
+    {
+        if ($casa->status == 1) {
+            $casa->update(['status' => 2]);
+            return redirect()->back();
+        } else {
+            $casa->update(['status' => 1]);
+            return redirect()->back();
+        }
+    }
 }
