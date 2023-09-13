@@ -26,6 +26,8 @@ return new class extends Migration
             $table->string('country')->nullable();
             $table->string('postal')->nullable();
             $table->text('about')->nullable();
+            $table->string('google_id')->nullable();
+
             $table->rememberToken();
             $table->timestamps();
         });

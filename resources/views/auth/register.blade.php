@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     @include('layouts.navbars.guest.navbar')
     <main class="main-content  mt-0">
 
@@ -28,7 +27,7 @@
                         <div class="card-header text-center pt-4">
                             <h5>Registrar con</h5>
                         </div>
-                        
+
                         <div class="row px-xl-5 px-sm-4 px-3">
                             <div class="col-3 ms-auto px-1">
                                 <a class="btn btn-outline-light w-100" href="javascript:;">
@@ -63,7 +62,7 @@
                             </div>
 
                             <div class="col-3 me-auto px-1">
-                                <a class="btn btn-outline-light w-100" href="javascript:;">
+                                <a class="btn btn-outline-light w-100" href="/login-google">
                                     <svg width="24px" height="32px" viewBox="0 0 64 64" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <g transform="translate(3.000000, 2.000000)" fill-rule="nonzero">
@@ -99,24 +98,35 @@
                             <form method="POST" action="{{ route('register.perform') }}">
                                 @csrf
                                 <div class="flex flex-col mb-3">
-                                    <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Name" value="{{ old('username') }}" >
-                                    @error('username') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
+                                    <input type="text" name="username" class="form-control" placeholder="Username"
+                                        aria-label="Name" value="{{ old('username') }}">
+                                    @error('username')
+                                        <p class='text-danger text-xs pt-1'> {{ $message }} </p>
+                                    @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Email" value="{{ old('email') }}" >
-                                    @error('email') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
+                                    <input type="email" name="email" class="form-control" placeholder="Email"
+                                        aria-label="Email" value="{{ old('email') }}">
+                                    @error('email')
+                                        <p class='text-danger text-xs pt-1'> {{ $message }} </p>
+                                    @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password">
-                                    @error('password') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
+                                    <input type="password" name="password" class="form-control" placeholder="Password"
+                                        aria-label="Password">
+                                    @error('password')
+                                        <p class='text-danger text-xs pt-1'> {{ $message }} </p>
+                                    @enderror
                                 </div>
                                 <div class="form-check form-check-info text-start">
-                                    <input class="form-check-input" type="checkbox" name="terms" id="flexCheckDefault" >
+                                    <input class="form-check-input" type="checkbox" name="terms" id="flexCheckDefault">
                                     <label class="form-check-label" for="flexCheckDefault">
                                         I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms and
                                             Conditions</a>
                                     </label>
-                                    @error('terms') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
+                                    @error('terms')
+                                        <p class='text-danger text-xs'> {{ $message }} </p>
+                                    @enderror
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Sign up</button>

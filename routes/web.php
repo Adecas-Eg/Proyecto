@@ -10,7 +10,11 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;
 use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +41,33 @@ Route::get('/', function () {
 	return redirect('/casa');
 })->middleware('auth');
 
+
+Route::get('/login-google', function () {
+	return Socialite::driver('google')->redirect();
+});
+
+Route::get('/google-callback', function () {
+	$user = Socialite::driver('google')->user();
+	$userExists = User::where('external_id', $user->getId())->where('external_auth', 'google')->first();
+
+	if ($userExists) {
+		Auth::login($userExists);
+	} else {
+		$userNew = User::create([
+			'username' => $user->name,
+			'email' => $user->email,
+			'external_id' => $user->getId(),
+			'external_auth' => 'google'
+		]);
+
+		$userNew->roles()->sync(1);
+		Auth::login($userNew);
+	}
+
+
+	return redirect()->route('casa.index');
+});
+
 Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.perform');
 Route::get('/login', [LoginController::class, 'show'])->middleware('guest')->name('login');
@@ -62,7 +93,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/administer', [CasaController::class, 'administer'])->name('casa.administer');
 	Route::get('/casa/{casa}', [CasaController::class, 'edit'])->name('casa.edit');
 	Route::patch('/casa/{casa}', [CasaController::class, 'update'])->name('casa.update');
-	Route::get('/change_status/{casa}', [CasaController::class,'change_status'])->name('change_status');
+	Route::get('/change_status/{casa}', [CasaController::class, 'change_status'])->name('change_status');
 });
 
 Route::group(['middleware' => 'auth'], function () {

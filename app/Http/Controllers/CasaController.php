@@ -37,10 +37,10 @@ class CasaController extends Controller
     public function index(Request $request)
     {
 
-        NHjdooHzRn9KPiXIB3u-bluOKVDmYwNpJshqKJIauRpjXMz_4BkTUsvP7RfdSTolCvA
+
         $buscar  = $request->buscar;
 
-        $casas = Casa::with(['media'])->where('name', 'like', '%' . $buscar . '%')->where('status', 'like', '1')->paginate(1);
+        $casas = Casa::with(['media'])->where('name', 'like', '%' . $buscar . '%')->where('status', 'like', '1')->paginate(6);
 
         // return $casas;
         return view('casas.index', compact('casas', 'buscar'));
@@ -119,8 +119,13 @@ class CasaController extends Controller
         foreach ($casas1 as $casa) {
             $casas[] = $casa->with(['media'])->find($casa->id);
         }
+
+        if (empty($casas)) {
+            return view('casas.administer');
+        } else {
+            return view('casas.administer', compact('casas'));
+        }
         // return  $casas;
-        return view('casas.administer', compact('casas'));
     }
 
 

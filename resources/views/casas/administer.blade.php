@@ -45,49 +45,59 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if (!empty($casas))
+                                        @foreach ($casas as $casa)
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div>
 
-                                    @foreach ($casas as $casa)
+                                                            {{-- arreglar mostrar la primera imagen  --}}
+                                                            <img src="{{ $casa->getMedia('casas')->first()->getUrl('thumb') }}"
+                                                                class="avatar avatar-sm me-3" alt="user1">
+                                                        </div>
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <h6 class="mb-0 text-sm">{{ $casa->name }} </h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p class="text-xs font-weight-bold mb-0">{{ $casa->tipo_oferta }}</p>
+                                                </td>
+                                                <td class="align-middle text-center text-sm">
+                                                    @if ($casa->status == 1)
+                                                        {{-- se puede poner un modal para confirmar --}}
+                                                        <a href="{{ route('change_status', $casa) }}"><span
+                                                                class="badge badge-sm bg-gradient-success"> Activo
+                                                            </span></a>
+                                                    @else
+                                                        <a href="{{ route('change_status', $casa) }}"><span
+                                                                class="badge badge-sm bg-gradient-dark"> Inactivo
+                                                            </span></a>
+                                                    @endif
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span
+                                                        class="text-secondary text-xs font-weight-bold">{{ $casa->tipo_inmueble }}</span>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <a href="{{ route('casa.edit', $casa) }}"
+                                                        class=" badge badge-sm bg-gradient-info  text-xs"
+                                                        data-toggle="tooltip" data-original-title="Edit">
+                                                        edit
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @else
                                         <tr>
                                             <td>
-                                                <div class="d-flex px-2 py-1">
-                                                    <div>
-
-                                                        {{-- arreglar mostrar la primera imagen  --}}
-                                                        <img src="{{ $casa->getMedia('casas')->first()->getUrl('thumb') }}"
-                                                            class="avatar avatar-sm me-3" alt="user1">
-                                                    </div>
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">{{ $casa->name }} </h6>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p class="text-xs font-weight-bold mb-0">{{ $casa->tipo_oferta }}</p>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                @if ($casa->status == 1)
-                                                    {{-- se puede poner un modal para confirmar --}}
-                                                    <a href="{{ route('change_status', $casa) }}"><span
-                                                            class="badge badge-sm bg-gradient-success"> Activo </span></a>
-                                                @else
-                                                    <a href="{{ route('change_status', $casa) }}"><span
-                                                            class="badge badge-sm bg-gradient-dark"> Inactivo </span></a>
-                                                @endif
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span
-                                                    class="text-secondary text-xs font-weight-bold">{{ $casa->tipo_inmueble }}</span>
-                                            </td>
-                                            <td class="align-middle">
-                                                <a href="{{ route('casa.edit', $casa) }}"
-                                                    class=" badge badge-sm bg-gradient-info  text-xs" data-toggle="tooltip"
-                                                    data-original-title="Edit">
-                                                    edit
-                                                </a>
+                                                <h1
+                                                    class="text-uppercase text-secondary text-lg font-weight-bolder opacity-7">
+                                                    No tienen ninguna casa que administrar</h1>
                                             </td>
                                         </tr>
-                                    @endforeach
-
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
