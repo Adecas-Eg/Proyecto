@@ -38,8 +38,13 @@ class User extends Authenticatable
 
 
     // /relacion uno amuchos
-    public function casas(){
+    public function casas()
+    {
         return $this->hasMany('App\Models\Casa');
+    }
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
     }
 
     /**
@@ -65,8 +70,8 @@ class User extends Authenticatable
      * Always encrypt the password when it is updated.
      *
      * @param $value
-    * @return string
-    */
+     * @return string
+     */
     public function setPasswordAttribute($value)
     {
         //ENCRIPTAR CONTRASEÑA

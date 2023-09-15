@@ -4,277 +4,251 @@
     @include('layouts.navbars.auth.topnav', ['title' => $casa->name])
 
     {{-- crear tabla de relaciones con los link para hacer un foreche y que cada vez que se puedan poner 3 imagenes est este --}}
-    <div class="container-fluid py-4">
-        <div class="row">
-            <div class="row mt-4">
-                <div class="col-lg-7 mb-lg-0 mb-4">
-                    <div class="card card-carousel overflow-hidden h-100 p-0 ">
-                        <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
-                            <div class="carousel-inner border radius-lg h-100">
-                                <div class="carousel-item h-100 active"
-                                    style="background-image: url({{ $casa->getMedia('casas')->first()->getUrl('thumb') }});background-size: cover;">
-                                    <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                                        <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                                            <i class="ni ni-camera-compact text-dark opacity-10"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item h-100"
-                                    style="background-image: url({{ $casa->getMedia('casas')->last()->getUrl('thumb') }}); background-size: cover;">
-                                    <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                                        <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                                            <i class="ni ni-bulb-61 text-dark opacity-10"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                    
-                                
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                {{-- carousel mejorar --}}
+                <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
+                    <div class="carousel-inner border radius-lg h-100">
+                        <div class="carousel-item active" data-mdb-interval="2000">
+                            <img src="{{ $casa->getMedia('casas')->first()->getUrl('thumb') }}" class="d-block w-100"
+                                alt="Wild Landscape" />
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>{{ $casa->name }}</h5>
+
                             </div>
                         </div>
-
-
-                        <div>
-                            <button class="carousel-control-prev w-5 me-3" type="button"
-                                data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next w-5 me-3" type="button"
-                                data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
-
-                {{-- <div class="col-lg-7 mb-lg-0 mb-4">
-                    <div class="card card-carousel overflow-hidden h-100 p-0">
-                        <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
-                            <div class="carousel-inner border-radius-lg h-100">
-                                <div class="carousel-item h-100 active"
-                                    style="background-image: url({{ asset('img/carousel-1.jpg') }});background-size: cover;">
-                                    <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                                        <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                                            <i class="ni ni-camera-compact text-dark opacity-10"></i>
-                                        </div>
-                                        <h5 class="text-white mb-1">{{ $casa->name }}</h5>
-                                        <p>{{ $casa->descripcion }}
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="carousel-item h-100"
-                                    style="background-image: url({{ asset('img/carousel-2.jpg') }}); background-size: cover;">
-                                    <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                                        <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                                            <i class="ni ni-bulb-61 text-dark opacity-10"></i>
-                                        </div>
-                                        <h5 class="text-white mb-1">Faster way to create web pages</h5>
-                                        <p>That’s my skill. I’m not really specifically talented at anything except for the
-                                            ability to learn.</p>
-                                    </div>
-                                </div>
-                                <div class="carousel-item h-100"
-                                    style="background-image: url({{ asset('img/carousel-1.jpg') }});
-            background-size: cover;">
-                                    <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                                        <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                                            <i class="ni ni-trophy text-dark opacity-10"></i>
-                                        </div>
-                                        <h5 class="text-white mb-1">Share with us your design tips!</h5>
-                                        <p>Don’t be afraid to be wrong because you can’t learn anything from a compliment.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            botones de carrosul
-                            <button class="carousel-control-prev w-5 me-3" type="button"
-                                data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next w-5 me-3" type="button"
-                                data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
+                        <div class="carousel-item" data-mdb-interval="2000">
+                            <img src="{{ $casa->getMedia('casas')->first()->getUrl('thumb') }}" class="d-block w-100"
+                                alt="Camera" />
                         </div>
                     </div>
-                </div> --}}
 
-                {{-- datos estras de la casa --}}
-                <div class="col-lg-5">
-                    <div class="card">
-                        <div class="card-header pb-0 p-3">
-                            <h6 class="mb-0">Informmacion</h6>
-                        </div>
-                        <div class="card-body  p-3">
-                            <ul class="list-group">
-                                <li
-                                    class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                                    <div class="d-flex align-items-center">
-                                        <div class="icon icon-shape icon-sm me-3 bg-gradient-info shadow text-center">
-
-                                            <i class="ni ni-world text-white opacity-10"></i>
-                                        </div>
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-1 text-dark text-sm">Ubicacion</h6>
-                                        </div>
-                                        <button
-                                            class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"
-                                            type="button" data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                class="ni ni-bold-right" aria-hidden="true"></i></button>
-
-                                        <ul class="dropdown-menu">
-
-
-                                            <li><a class="dropdown-item" href="#">Ciudad :</a></li>
-                                            <li><a class="dropdown-item" href="#">Dirreccion: </a></li>
-                                            <li><a class="dropdown-item" href="#">Codigo Postal</a></li>
-                                        </ul>
-                                    </div>
-
-
-                                </li>
-                                <li
-                                    class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                                    <div class="d-flex align-items-center">
-                                        <div class="icon icon-shape icon-sm me-3 bg-gradient-secondary shadow text-center">
-                                            <i class="ni ni-planet text-white opacity-10"></i>
-                                        </div>
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-1 text-dark text-sm">Espacios</h6>
-                                        </div>
-                                        <button
-                                            class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"
-                                            type="button" data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                class="ni ni-bold-right" aria-hidden="true"></i></button>
-
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">Baños :</a></li>
-                                            <li><a class="dropdown-item" href="#">Parqueaderos: </a></li>
-                                            <li><a class="dropdown-item" href="#">Otros: </a></li>
-                                        </ul>
-                                    </div>
-
-                                </li>
-                                <li
-                                    class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                                    <div class="d-flex align-items-center">
-                                        <div class="icon icon-shape icon-sm me-3 bg-gradient-info shadow text-center">
-                                            <i class="ni ni-world text-white opacity-10"></i>
-                                        </div>
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-1 text-dark text-sm">Ubicacion</h6>
-                                        </div>
-                                        <button
-                                            class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"
-                                            type="button" data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                class="ni ni-bold-right" aria-hidden="true"></i></button>
-
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">Ciudad :</a></li>
-                                            <li><a class="dropdown-item" href="#">Dirreccion: </a></li>
-                                            <li><a class="dropdown-item" href="#">Codigo Postal</a></li>
-                                        </ul>
-                                    </div>
-
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    {{-- botones de carousel --}}
+                    <button class="carousel-control-prev w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
             </div>
-            <iframe width="560" height="315" src="https://virtualitour.es/tours/awTkD6AJQ6HzA5xAu7o7?autoLoad=false" frameborder="0" allowfullscreen></iframe>
-            @include('layouts.footers.auth.footer')
+
+
+
+
+
+
+
+
+            {{-- mejorar y poner url dinamico --}}
+            {{-- <iframe width="560" height="315" src="https://virtualitour.es/tours/fl89QxQQBQ1U1KIR5uVk" frameborder="0"
+                allowfullscreen></iframe> --}}
+
+
+
+            {{-- comentarios  mejorar --}}
+            <section>
+                <div class="container my-5 py-5">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-md-12 col-lg-10">
+                            <div class="card text-dark">
+                                <div class="card-body p-4">
+                                    <h4 class="mb-0 small lh-sm border-bottom">Comments </h4>
+                                    <p class="fw-light mb-4 pb-2 small lh-sm ">Latest Comments section by users</p>
+                                    <form action="{{ route('comment.store', $casa->id) }}" method="post">
+                                        @csrf
+                                        <div class="d-flex text-body-secondary  ">
+
+
+                                            <textarea id="comment"name="comment" class="form-control  mb-0 small lh-sm border-bottom" style="resize:none">  
+                                               </textarea>
+                                        </div>
+                                        <div class="d-flex text-body-secondary pt-3 justify-content-end align-content-end">
+                                            <input type="submit" class="btn btn-outline-primary btn-sm lh-sm"
+                                                id="prueba" value="Confirmar">
+                                        </div>
+                                    </form>
+                                    {{-- mostrar los comentarios --}}
+                                    @if (!empty($comments))
+                                        @foreach ($comments as $comment)
+                                            <div class="d-flex flex-start mt-2">
+                                                <img class="rounded-circle shadow-1-strong me-3"
+                                                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp"
+                                                    alt="avatar" width="60" height="60" />
+                                                <div>
+                                                    <h6 class="fw-bold mb-1">{{ $comment->user->username }}</h6>
+                                                    <div class="d-flex align-items-center mb-3">
+                                                        @if ($comment->user->id == auth()->user()->id)
+                                                            <p class="mb-0 small lh-sm ">
+                                                                {{ $comment->created }}
+                                                                <a class="badge bg-primary ">Active</a>
+                                                            </p>
+
+                                                            <a href="#!" class="link-muted" data-bs-toggle="modal"
+                                                                data-bs-target="#update{{ $comment->id }}"><i
+                                                                    class="fas fa-pencil-alt text-info ms-2"></i></a>
+                                                            <a href="#!" class="link-muted" data-bs-toggle="modal"
+                                                                data-bs-target="#update{{ $comment->id }}"><i
+                                                                    class="fas fa-trash-alt text-danger ms-2"></i></a>
+                                                        @endif
+
+                                                    </div>
+                                                    <p class="mb-0 small lh-sm border-bottom">
+                                                        {{ $comment->comment }}
+                                                    </p>
+                                                </div>
+                                            </div>
+
+
+                                            {{-- modal para update de comentarios --}}
+                                            <div class="modal fade" id="update{{ $comment->id }}" tabindex="-1"
+                                                aria-labelledby="exampleModdcalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <form action="{{ route('comment.update', $comment) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            @method('PATCH')
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                                    Modificar comentario
+                                                                </h1>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <textarea name="comment" class="form-control   border-bottom" cols="40" rows="8">  {{ $comment->comment }}
+                                                                </textarea>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-primary">Save
+                                                                    changes</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @else
+                                        <div class="d-flex flex-start mt-2">
+                                            <img class="rounded-circle shadow-1-strong me-3"
+                                                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp"
+                                                alt="avatar" width="60" height="60" />
+
+                                        </div>
+                                    @endif
+
+
+
+
+
+                                </div>
+
+                                <hr class="my-0" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-    @endsection
+        @include('layouts.footers.auth.footer')
+    </div>
+@endsection
 
-    @push('js')
-        <script src="./assets/js/plugins/chartjs.min.js"></script>
-        <script>
-            var ctx1 = document.getElementById("chart-line").getContext("2d");
 
-            var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
+@push('js')
+    <script src="./assets/js/plugins/chartjs.min.js"></script>
 
-            gradientStroke1.addColorStop(1, 'rgba(251, 99, 64, 0.2)');
-            gradientStroke1.addColorStop(0.2, 'rgba(251, 99, 64, 0.0)');
-            gradientStroke1.addColorStop(0, 'rgba(251, 99, 64, 0)');
-            new Chart(ctx1, {
-                type: "line",
-                data: {
-                    labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                    datasets: [{
-                        label: "Mobile apps",
-                        tension: 0.4,
-                        borderWidth: 0,
-                        pointRadius: 0,
-                        borderColor: "#fb6340",
-                        backgroundColor: gradientStroke1,
-                        borderWidth: 3,
-                        fill: true,
-                        data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-                        maxBarThickness: 6
 
-                    }],
+
+    <script>
+        var ctx1 = document.getElementById("chart-line").getContext("2d");
+
+        var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
+
+        gradientStroke1.addColorStop(1, 'rgba(251, 99, 64, 0.2)');
+        gradientStroke1.addColorStop(0.2, 'rgba(251, 99, 64, 0.0)');
+        gradientStroke1.addColorStop(0, 'rgba(251, 99, 64, 0)');
+        new Chart(ctx1, {
+            type: "line",
+            data: {
+                labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                datasets: [{
+                    label: "Mobile apps",
+                    tension: 0.4,
+                    borderWidth: 0,
+                    pointRadius: 0,
+                    borderColor: "#fb6340",
+                    backgroundColor: gradientStroke1,
+                    borderWidth: 3,
+                    fill: true,
+                    data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+                    maxBarThickness: 6
+
+                }],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false,
+                    }
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false,
+                interaction: {
+                    intersect: false,
+                    mode: 'index',
+                },
+                scales: {
+                    y: {
+                        grid: {
+                            drawBorder: false,
+                            display: true,
+                            drawOnChartArea: true,
+                            drawTicks: false,
+                            borderDash: [5, 5]
+                        },
+                        ticks: {
+                            display: true,
+                            padding: 10,
+                            color: '#fbfbfb',
+                            font: {
+                                size: 11,
+                                family: "Open Sans",
+                                style: 'normal',
+                                lineHeight: 2
+                            },
                         }
                     },
-                    interaction: {
-                        intersect: false,
-                        mode: 'index',
-                    },
-                    scales: {
-                        y: {
-                            grid: {
-                                drawBorder: false,
-                                display: true,
-                                drawOnChartArea: true,
-                                drawTicks: false,
-                                borderDash: [5, 5]
-                            },
-                            ticks: {
-                                display: true,
-                                padding: 10,
-                                color: '#fbfbfb',
-                                font: {
-                                    size: 11,
-                                    family: "Open Sans",
-                                    style: 'normal',
-                                    lineHeight: 2
-                                },
-                            }
+                    x: {
+                        grid: {
+                            drawBorder: false,
+                            display: false,
+                            drawOnChartArea: false,
+                            drawTicks: false,
+                            borderDash: [5, 5]
                         },
-                        x: {
-                            grid: {
-                                drawBorder: false,
-                                display: false,
-                                drawOnChartArea: false,
-                                drawTicks: false,
-                                borderDash: [5, 5]
+                        ticks: {
+                            display: true,
+                            color: '#ccc',
+                            padding: 20,
+                            font: {
+                                size: 11,
+                                family: "Open Sans",
+                                style: 'normal',
+                                lineHeight: 2
                             },
-                            ticks: {
-                                display: true,
-                                color: '#ccc',
-                                padding: 20,
-                                font: {
-                                    size: 11,
-                                    family: "Open Sans",
-                                    style: 'normal',
-                                    lineHeight: 2
-                                },
-                            }
-                        },
+                        }
                     },
                 },
-            });
-        </script>
-    @endpush
+            },
+        });
+    </script>
+@endpush

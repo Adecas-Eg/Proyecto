@@ -104,6 +104,18 @@
                                 </div>
                             </div>
                             <hr class="horizontal dark">
+                            <p class="text-uppercase text-sm">Seguridad </p>
+                            <div class="row">
+                                
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">Password</label>
+                                        <input class="form-control" type="password" name="password"
+                                            value="{{ old('address', auth()->user()->password) }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="horizontal dark">
                             <p class="text-uppercase text-sm">Contact Information</p>
                             <div class="row">
                                 <div class="col-md-12">

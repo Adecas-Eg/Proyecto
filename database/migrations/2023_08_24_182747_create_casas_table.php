@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -25,13 +24,17 @@ return new class extends Migration
             $table->string('baños');
             $table->string('parqueaderos');
             $table->string('pisos');
+            $table->string('area');
+            $table->string('url_3d');
+
+
             $table->integer('status')->nullable();
-            $table->string('precio')->nullable();
+            $table->string('precio');
 
             $table->unsignedBigInteger('user_id')->nullable();
 
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             // $table->foreign('') iinvestigar bien como son las referencias en laravel
             $table->timestamps();
         });

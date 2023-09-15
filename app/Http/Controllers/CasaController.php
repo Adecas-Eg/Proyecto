@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCasa;
 use App\Models\Casa;
+use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
@@ -38,7 +39,7 @@ class CasaController extends Controller
     {
 
 
-        $buscar  = $request->buscar;
+        $buscar = $request->buscar;
 
         $casas = Casa::with(['media'])->where('name', 'like', '%' . $buscar . '%')->where('status', 'like', '1')->paginate(6);
 
@@ -80,8 +81,21 @@ class CasaController extends Controller
      */
     public function show(Casa $casa)
     {
-        $a = $casa->with(['media'])->find($casa->id);
+
+        $user = User::find(auth()->user()->id);
+
+        $comments = Comment::get()->where('casa_id', $casa->id);
+
+        $casa->with(['media'])->find($casa->id);
+        if (!empty($comments)) {
+            return view('casas.show', compact('casa', 'comments'));
+
+        }
+
+
+
         return view('casas.show', compact('casa'));
+
     }
 
     /**
@@ -99,7 +113,7 @@ class CasaController extends Controller
     {
         $casa->update($request->validated());
 
-        return  redirect('administer')->with('status', 'inmueble modificado');
+        return redirect('administer')->with('status', 'inmueble modificado');
     }
 
     /**

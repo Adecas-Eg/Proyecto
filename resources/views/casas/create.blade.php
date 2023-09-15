@@ -100,7 +100,8 @@
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Valor del
                                             inmueble</label>
-                                        <input class="form-control" type="number" name="precio" value="{{ old('precio') }}">
+                                        <input class="form-control" type="number" name="precio"
+                                            value="{{ old('precio') }}">
                                         @error('precio')
                                             <p class="text-danger text-xs pt-1"> {{ $message }} </p>
                                         @enderror
@@ -204,15 +205,35 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         {{-- cambiar a text area --}}
-                                        <label for="asas" class="form-control-label">Imagenes del inmueble</label>
-                                        <input class="form-control align-content-between" type="file"
-                                            name="imagenes[]" multiple>
+                                        <label for="asas" class="form-control-label">Area m<sup>2</sup></label>
+                                        <input class="form-control align-content-between" type="text" name="area" value="{{old('area')}}">
                                         <div class="notification is-danger">
-                                            @error('imagenes')
+                                            @error('area')
                                                 <p class="text-danger text-xs pt-1"> {{ $message }} </p>
                                             @enderror
                                         </div>
 
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        {{-- cambiar a text area --}}
+                                        <label for="asas" class="form-control-label">Imagenes del inmuebles</label>
+                                        <input class="form-control align-content-between" type="file"
+                                            name="imagenes[]" multiple>
+                                        @error('imagenes')
+                                            <p class="text-danger text-xs pt-1"> {{ $message }} </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        {{-- cambiar a text area --}}
+                                        <label for="asas" class="form-control-label">Reccorido 3d</label>
+                                        <input class="form-control align-content-between" type="text" name="url_3d" value="{{old('url_3d')}}">
+                                        @error('url_3d')
+                                            <p class="text-danger text-xs pt-1"> {{ $message }} </p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <button class="btn btn-primary text-white">Guardar</button>

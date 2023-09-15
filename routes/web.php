@@ -9,6 +9,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -52,6 +53,7 @@ Route::get('/google-callback', function () {
 
 	if ($userExists) {
 		Auth::login($userExists);
+		return redirect()->route('casa.index');
 	} else {
 		$userNew = User::create([
 			'username' => $user->name,
@@ -60,8 +62,8 @@ Route::get('/google-callback', function () {
 			'external_auth' => 'google'
 		]);
 
-		$userNew->roles()->sync(1);
-		Auth::login($userNew);
+		$userNew->roles()->sync(2);
+		return redirect()->route('change.password', compact('userNew'));
 	}
 
 
@@ -74,13 +76,21 @@ Route::get('/login', [LoginController::class, 'show'])->middleware('guest')->nam
 Route::post('/login', [LoginController::class, 'login'])->middleware('guest')->name('login.perform');
 Route::get('/reset-password', [ResetPassword::class, 'show'])->middleware('guest')->name('reset-password');
 Route::post('/reset-password', [ResetPassword::class, 'send'])->middleware('guest')->name('reset.perform');
-Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('change-password');
-Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
+Route::get('/change-password/{userNew}', [ChangePassword::class, 'show'])->middleware('guest')->name('change.password');
+Route::post('/change-password/{userNew}', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
 
 Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard')->middleware('auth', 'can:dashboard');
 
 
 Route::get('/principals', [CasaController::class, 'home'])->name('casa.home');
+
+
+Route::group(['middleware' => 'auth'], function () {
+	Route::get('/comment', [CommentController::class, 'index'])->name('comment.index');
+	Route::post('/comment/{id}', [CommentController::class, 'store'])->name('comment.store');
+	Route::patch('/comment/{comment}', [CommentController::class, 'update'])->name('comment.update');
+});
+
 
 
 Route::group(['middleware' => 'auth'], function () {

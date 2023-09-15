@@ -17,6 +17,7 @@ class UserProfileController extends Controller
         $attributes = $request->validate([
             'username' => ['required','max:255', 'min:2'],
             'firstname' => ['max:100'],
+            'password' => ['max:100'],
             'lastname' => ['max:100'],
             'email' => ['required', 'email', 'max:255',  Rule::unique('users')->ignore(auth()->user()->id),],
             'address' => ['max:100'],
@@ -29,6 +30,7 @@ class UserProfileController extends Controller
         auth()->user()->update([
             'username' => $request->get('username'),
             'firstname' => $request->get('firstname'),
+            'password' => $request->get('password'),
             'lastname' => $request->get('lastname'),
             'email' => $request->get('email') ,
             'address' => $request->get('address'),

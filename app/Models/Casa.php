@@ -24,6 +24,14 @@ class Casa extends Model implements HasMedia
     public function user(){
       return $this->belongsTo('App\Models\User');
     }
+
+
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
+
+    
     public function getSlugOptions() : SlugOptions
     {
         return SlugOptions::create()
