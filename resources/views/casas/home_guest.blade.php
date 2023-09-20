@@ -21,15 +21,16 @@
                 </div>
                 <div class="col-lg-10 text-center mt-5 pt-3">
                     <div class=" ">
-                        <form action="{{route('casa.index')}}" method="get" class="form">
+                        <form action="{{ route('casa.index') }}" method="get" class="form">
                             <div class="input-group   ">
-                                <input type="text" name="buscar"  class="form-control border border-primary" placeholder="Ubicacion">
-    
+                                <input type="text" name="buscar" class="form-control border border-primary"
+                                    placeholder="Ubicacion">
+
                                 <button type="button" class="form-control border border-primary dropdown-toggle"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Transsacion
                                 </button>
-    
+
                                 <ul class="dropdown-menu dropdown-menu-dark">
                                     <div class="row">
                                         <div class="col-lg-6">
@@ -106,44 +107,44 @@
                                                 </label>
                                             </div>
                                         </div>
-    
+
                                     </div>
-    
-    
+
+
                                 </ul>
                                 <button type="button" class="form-control border border-primary dropdown-toggle"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Inmueble
                                 </button>
-    
+
                                 <ul class="dropdown-menu dropdown-menu-dark">
                                     <div class="form-check  ">
-                                        <input class="form-check-input input-group-outline" type="checkbox" value=""
-                                            id="flexCheckDefault">
+                                        <input class="form-check-input input-group-outline" type="checkbox"
+                                            value="" id="flexCheckDefault">
                                         <i class="fa fa-money" aria-hidden="true"></i>
                                         <label class="form-check-label text-white" for="flexCheckDefault">
                                             Venta
                                         </label>
                                     </div>
                                     <div class="form-check ">
-                                        <input class="form-check-input input-group-outline" type="checkbox" value=""
-                                            id="flexCheckDefault">
+                                        <input class="form-check-input input-group-outline" type="checkbox"
+                                            value="" id="flexCheckDefault">
                                         <i class="fa fa-handshake-o" aria-hidden="true"></i>
                                         <label class="form-check-label text-white" for="flexCheckDefault">
                                             Arriendo
                                         </label>
                                     </div>
-    
+
                                 </ul>
-                                <button type="submit" class="input-group-text bg-primary text-body"><i class="fas fa-search text-white"
-                                        aria-hidden="true"></i></button>
+                                <button type="submit" class="input-group-text bg-primary text-body"><i
+                                        class="fas fa-search text-white" aria-hidden="true"></i></button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-    
+
 
 
         <div class="container">

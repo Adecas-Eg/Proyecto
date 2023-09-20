@@ -29,7 +29,7 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <p class="text-uppercase text-sm">Creacion de inmueble</p>
+                            <p class="text-uppercase text-sm">Editar inmueble</p>
 
                             <div class="row">
                                 <div class="col-md-6">
@@ -65,21 +65,15 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Tipo Inmueble</label>
-                                        <select class="form-select" aria-label="Default select example" name="tipo_inmueble"
-                                            value="{{ $casa->tipo_inmueble }}">
-                                            <option value="casa" @if ($casa->tipo_inmueble === 'casa') selected @endif>Casa
-                                            </option>
-                                            <option value="apartamento" @if ($casa->tipo_inmueble === 'apartamento') selected @endif>
+                                        <select class="form-select" aria-label="Default select example" name="tipo_inmueble">
+                                            <option value="1" @if ($casa->tipo_inmueble == '1') selected @endif>
                                                 Apartamento</option>
-                                            <option value="local" @if ($casa->tipo_inmueble === 'local') selected @endif>Local
+                                            <option value="2" @if ($casa->tipo_inmueble == '2') selected @endif>Casa
                                             </option>
-                                            <option value="lote" @if ($casa->tipo_inmueble === 'lote') selected @endif>Lote
+                                            <option value="3" @if ($casa->tipo_inmueble == '3') selected @endif>Local
                                             </option>
-                                            <option value="venta" @if ($casa->tipo_inmueble === 'venta') selected @endif>Venta
+                                            <option value="4" @if ($casa->tipo_inmueble == '4') selected @endif>Lote
                                             </option>
-                                            <option value="venta" @if ($casa->tipo_inmueble === 'venta') selected @endif>Venta
-                                            </option>
-
                                             @error('tipo_inmueble')
                                                 <p class="text-danger text-xs pt-1"> {{ $message }} </p>
                                             @enderror
@@ -323,6 +317,4 @@
         </div>
         @include('layouts.footers.auth.footer')
     </div>
-
-   
 @endsection

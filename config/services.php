@@ -36,4 +36,5 @@ return [
         'client_secret' => env('GOOGLE_OAUTH_KEY'),
         'redirect' => 'http://127.0.0.1:8000/google-callback',
     ],
+   
 ];

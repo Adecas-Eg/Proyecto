@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 
+// si no selen las imagers configurar app 
 
 class CasaController extends Controller
 {
@@ -41,7 +42,8 @@ class CasaController extends Controller
 
         $buscar = $request->buscar;
 
-        $casas = Casa::with(['media'])->where('name', 'like', '%' . $buscar . '%')->where('status', 'like', '1')->paginate(6);
+        $casas = Casa::with(['media'])->where('name', 'like', '%' . $buscar . '%')->where('status', 'like', '1')->paginate(6 );
+
 
         // return $casas;
         return view('casas.index', compact('casas', 'buscar'));
@@ -65,7 +67,6 @@ class CasaController extends Controller
         $casa->user_id = auth()->user()->id;
         $casa->status = 1;
         $casa->save();
-
         if (request()->hasFile('imagenes')) {
             $casa->addMultipleMediaFromRequest(['imagenes'])
                 ->each(function ($fileAdder) {
@@ -103,6 +104,7 @@ class CasaController extends Controller
      */
     public function edit(Casa $casa)
     {
+
         return view('casas.edit', compact('casa'));
     }
 

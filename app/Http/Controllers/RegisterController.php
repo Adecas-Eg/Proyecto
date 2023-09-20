@@ -22,6 +22,8 @@ class RegisterController extends Controller
         ]);
         $user = User::create($attributes);
         $user->roles()->sync(1);
+        $user->status = 1;
+        $user->save();
         auth()->login($user);
 
         return redirect()->route('casa.index');

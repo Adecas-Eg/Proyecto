@@ -7,7 +7,7 @@
         {{-- Nav de la pagina en que esta  --}}
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
+                <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Paginas</a></li>
                 <li class="breadcrumb-item text-sm text-white active" aria-current="page">{{ $title }}</li>
             </ol>
             <h6 class="font-weight-bolder text-white mb-0">{{ $title }}</h6>
@@ -19,10 +19,10 @@
 
             {{-- div del buscador  --}}
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                <div class="input-group">
+                {{-- <div class="input-group">
                     <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
                     <input type="text" class="form-control" placeholder="Type here...">
-                </div>
+                </div> --}}
             </div>
 
 
@@ -36,7 +36,8 @@
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                             class="nav-link text-white font-weight-bold px-0">
                             <i class="fa fa-user me-sm-1"></i>
-                            <span class="d-sm-inline d-none">Log out</span>
+                            <span class="d-sm-inline d-none">Cerrar sección
+                            </span>
                         </a>
                     </form>
                 </li>

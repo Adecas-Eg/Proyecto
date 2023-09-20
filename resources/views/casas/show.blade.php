@@ -9,18 +9,14 @@
             <div class="col-lg-6">
                 {{-- carousel mejorar --}}
                 <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
-                    <div class="carousel-inner border radius-lg h-100">
+                    <div class="carousel-inner border radius-lg h-100 border border-4 border-dark">
                         <div class="carousel-item active" data-mdb-interval="2000">
-                            <img src="{{ $casa->getMedia('casas')->first()->getUrl('thumb') }}" class="d-block w-100"
-                                alt="Wild Landscape" />
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>{{ $casa->name }}</h5>
-
-                            </div>
+                            {{-- <img src="{{ $casa->getMedia('casas')->first()->getUrl('thumb') }}" class="d-block w-100"
+                                alt="Wild Landscape" /> --}}
+                            <img src="{{ $casa->casas }}" class="d-block w-100" alt="Wild Landscape" />
                         </div>
                         <div class="carousel-item" data-mdb-interval="2000">
-                            <img src="{{ $casa->getMedia('casas')->first()->getUrl('thumb') }}" class="d-block w-100"
-                                alt="Camera" />
+                            <img src="{{ $casa->casas }}" class="d-block w-100" alt="Camera" />
                         </div>
                     </div>
 
@@ -56,15 +52,13 @@
                 <div class="container my-5 py-5">
                     <div class="row d-flex justify-content-center">
                         <div class="col-md-12 col-lg-10">
-                            <div class="card text-dark">
-                                <div class="card-body p-4">
+                            <div class="card text-dark ">
+                                <div class="card-body p-4 ">
                                     <h4 class="mb-0 small lh-sm border-bottom">Comments </h4>
                                     <p class="fw-light mb-4 pb-2 small lh-sm ">Latest Comments section by users</p>
                                     <form action="{{ route('comment.store', $casa->id) }}" method="post">
                                         @csrf
                                         <div class="d-flex text-body-secondary  ">
-
-
                                             <textarea id="comment"name="comment" class="form-control  mb-0 small lh-sm border-bottom" style="resize:none">  
                                                </textarea>
                                         </div>
@@ -93,7 +87,7 @@
                                                                 data-bs-target="#update{{ $comment->id }}"><i
                                                                     class="fas fa-pencil-alt text-info ms-2"></i></a>
                                                             <a href="#!" class="link-muted" data-bs-toggle="modal"
-                                                                data-bs-target="#update{{ $comment->id }}"><i
+                                                                data-bs-target="#delete{{ $comment->id }}"><i
                                                                     class="fas fa-trash-alt text-danger ms-2"></i></a>
                                                         @endif
 
@@ -135,6 +129,33 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class="modal fade" id="delete{{ $comment->id }}" tabindex="-1"
+                                                aria-labelledby="exampleModdcalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <form action="{{ route('comment.destroy', $comment) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                                    Eliminar comentario
+                                                                </h1>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+
+                                                            <div class="modal-body">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Cancelar</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-danger">Confirmar</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         @endforeach
                                     @else
                                         <div class="d-flex flex-start mt-2">
@@ -157,6 +178,9 @@
                     </div>
                 </div>
             </section>
+
+
+            
         </div>
         @include('layouts.footers.auth.footer')
     </div>

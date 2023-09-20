@@ -24,9 +24,10 @@ class ChangePassword extends Controller
         return view('auth.change-password', compact('userNew'));
     }
 
-    public function update(Request $request,User $userNew)
+    public function update(Request $request, User $userNew)
     {
         $userNew->password = $request->password;
+        $userNew->status = 1;
         $userNew->save();
         Auth::login($userNew);
         return redirect()->route('casa.index');

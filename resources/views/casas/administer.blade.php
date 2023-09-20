@@ -52,9 +52,11 @@
                                                     <div class="d-flex px-2 py-1">
                                                         <div>
 
-                                                            <a href="{{route('casa.show',$casa)}}">
+                                                            <a href="{{ route('casa.show', $casa) }}">
                                                                 {{-- arreglar mostrar la primera imagen  --}}
-                                                                <img src="{{ $casa->getMedia('casas')->first()->getUrl('thumb') }}"
+                                                                {{-- <img src="{{ $casa->getMedia('casas')->first()->getUrl('thumb') }}"
+                                                                    class="avatar avatar-sm me-3" alt="user1"> --}}
+                                                                <img src="{{ $casa->casas }}"
                                                                     class="avatar avatar-sm me-3" alt="user1">
                                                             </a>
                                                         </div>
@@ -69,11 +71,11 @@
                                                 <td class="align-middle text-center text-sm">
                                                     @if ($casa->status == 1)
                                                         {{-- se puede poner un modal para confirmar --}}
-                                                        <a href="{{ route('change_status', $casa) }}"><span
+                                                        <a href="{{ route('casa.change_status', $casa) }}"><span
                                                                 class="badge badge-sm bg-gradient-success"> Activo
                                                             </span></a>
                                                     @else
-                                                        <a href="{{ route('change_status', $casa) }}"><span
+                                                        <a href="{{ route('casa.change_status', $casa) }}"><span
                                                                 class="badge badge-sm bg-gradient-dark"> Inactivo
                                                             </span></a>
                                                     @endif

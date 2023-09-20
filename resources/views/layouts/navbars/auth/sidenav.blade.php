@@ -8,7 +8,8 @@
             aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0" href="{{ route('casa.home') }}">
             {{-- //IMAGEN Y LOGO --}}
-            <img src="{{ asset('./img/logo-ct-dark.png') }}" class="navbar-brand-img h-100" alt="main_logo">
+
+            {{-- <img src="{{ asset('./img/logo-ct-dark.png') }}" class="navbar-brand-img h-100" alt="main_logo"> --}}
             <span class="ms-1 font-weight-bold"> NOVA LIFA :)</span>
         </a>
     </div>

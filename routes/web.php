@@ -49,12 +49,26 @@ Route::get('/login-google', function () {
 
 Route::get('/google-callback', function () {
 	$user = Socialite::driver('google')->user();
-	$userExists = User::where('external_id', $user->getId())->where('external_auth', 'google')->first();
 
+	$userExists = User::where('external_id', $user->getId())->where('external_auth', 'google')->first();
+	$userNewExists = User::where('email', $user->email)->first();
+
+	// usuario registrado netamente de google
 	if ($userExists) {
 		Auth::login($userExists);
 		return redirect()->route('casa.index');
-	} else {
+
+	} //usuario registrado  primero en  la pagina y luego en google
+	if ($userNewExists) {
+		$userNewExists->update([
+			'external_id' => $user->getId(),
+			'external_auth' => 'google'
+		]);
+		Auth::login($userNewExists);
+		return redirect()->route('casa.index');
+
+	} //usuario nuevo de google 
+	else {
 		$userNew = User::create([
 			'username' => $user->name,
 			'email' => $user->email,
@@ -67,7 +81,6 @@ Route::get('/google-callback', function () {
 	}
 
 
-	return redirect()->route('casa.index');
 });
 
 Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
@@ -89,6 +102,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/comment', [CommentController::class, 'index'])->name('comment.index');
 	Route::post('/comment/{id}', [CommentController::class, 'store'])->name('comment.store');
 	Route::patch('/comment/{comment}', [CommentController::class, 'update'])->name('comment.update');
+	Route::delete('/comment/{comment}', [CommentController::class, 'destroy'])->name('comment.destroy');
 });
 
 
@@ -103,7 +117,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/administer', [CasaController::class, 'administer'])->name('casa.administer');
 	Route::get('/casa/{casa}', [CasaController::class, 'edit'])->name('casa.edit');
 	Route::patch('/casa/{casa}', [CasaController::class, 'update'])->name('casa.update');
-	Route::get('/change_status/{casa}', [CasaController::class, 'change_status'])->name('change_status');
+	Route::get('/casa/change_status/{casa}', [CasaController::class, 'change_status'])->name('casa.change_status');
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -111,6 +125,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/users', [UserController::class, 'store'])->name('users.store');
 	Route::get('/users/{user}', [UserController::class, 'edit'])->name('users.edit');
 	Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+	Route::get('/user/change_status/{user}', [UserController::class, 'change_status'])->name('user.change_status');
+
 });
 
 Route::group(['middleware' => 'auth'], function () {

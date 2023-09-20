@@ -12,26 +12,28 @@
             <div class="card">
                 <div class="card-header pb-0">
                     <div class="d-flex align-items-center">
-                        <p class="mb-0">Edit Role</p>
+                        <p class="mb-0">Editar  Role</p>
                     </div>
                 </div>
                 <div class="card-body">
-                    <p class="text-uppercase text-sm">User Information</p>
+                    <p class="text-uppercase text-sm">Informacion de Usuarios</p>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="example-text-input" class="form-control-label">Username</label>
+                                <label for="example-text-input" class="form-control-label">Usuario</label>
                                 <input class="form-control" type="text" name="username"
                                     value="{{ old('username', $user->username) }}">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="example-text-input" class="form-control-label">Email address</label>
+                                <label for="example-text-input" class="form-control-label">Correo</label>
                                 <input class="form-control" type="email" name="email"
                                     value="{{ old('email',  $user->email)  }}">
                             </div>
                         </div>
+
+                        {{-- Cambiar o asgignar roles --}}
                         <div class="col-md-6">
                             <h6 class="form-control-label">Roles</h6>
                             <div class="form-group">

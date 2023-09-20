@@ -25,8 +25,15 @@
                 <div class="card mb-4">
                     {{-- buscardor buscar como implementarlo  --}}
                     <div class="card-header pb-0">
-                        <h6>Mis users</h6>
-                        <input type="text" class="form-control" placeholder="ingrese el nombre  o correo">
+                        <h6>Usuarios</h6>
+                        <form class="form">
+                            <div class="input-group">
+                                <input type="text" name="buscar" class="form-control border border-secondary"
+                                    placeholder="email" value="{{ $buscar }}">
+                                <button class="input-group-text bg-info text-body"><i class="fas fa-search text-white"
+                                        aria-hidden="true"></i></button>
+                            </div>
+                        </form>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -34,25 +41,29 @@
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            name</th>
+                                            Usuario</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             email</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            username</th>
+                                            Nombre </th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            admin</th>
-                                        <th class="text-secondary opacity-7"></th>
+                                            Estado</th>
+                                        <th class="text-secondary opacity-7">
+
+                                        </th>
                                     </tr>
                                 </thead>
-                                <tbody>
 
+
+                                {{-- tabla de usuarios --}}
+                                <tbody>
                                     @foreach ($users as $user)
                                         <tr>
                                             <td>
-                                                <h6 class="mb-0 text-sm">{{ $user->lastname }} </h6>
+                                                <h6 class="mb-0 text-sm">{{ $user->username }} </h6>
                                             </td>
                                             <td>
                                                 <p class="text-xs font-weight-bold mb-0">{{ $user->email }}</p>
@@ -60,8 +71,20 @@
                                             <td class="align-middle text-center text-sm">
                                                 <span class="text-xs font-weight-bold mb-0">{{ $user->lastname }}</span>
                                             </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-secondary text-xs font-weight-bold">lastname</span>
+                                            <td class="align-middle text-center text-sm">
+                                                @if ($user->status == 1)
+                                                    {{-- se puede poner un modal para confirmar --}}
+                                                    <a href="{{ route('user.change_status', $user) }}"><span
+                                                            class="badge badge-sm bg-gradient-success"> Activo
+                                                        </span></a>
+                                                @else
+                                                    <a href="{{ route('user.change_status', $user) }}"><span
+                                                            class="badge badge-sm bg-gradient-dark"> Inactivo
+                                                        </span></a>
+                                                @endif
+                                            </td>
+                                            <td>
+
                                             </td>
                                             <td class="align-middle">
                                                 <a href="{{ route('users.edit', $user) }}"
@@ -75,7 +98,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            <div class="card-footer">
+                            <div class="pagination card-footer justify-content-center">
                                 {{ $users->links() }}
                             </div>
                         </div>

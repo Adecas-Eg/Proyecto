@@ -30,7 +30,7 @@ class User extends Authenticatable
         'address',
         'city',
         'country',
-        'postal',
+        'number',
         'about',
         'external_id',
         'external_auth'

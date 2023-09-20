@@ -23,7 +23,7 @@ class UserProfileController extends Controller
             'address' => ['max:100'],
             'city' => ['max:100'],
             'country' => ['max:100'],
-            'postal' => ['max:100'],
+            'number' => ['max:100'],
             'about' => ['max:255']
         ]);
 
@@ -36,7 +36,7 @@ class UserProfileController extends Controller
             'address' => $request->get('address'),
             'city' => $request->get('city'),
             'country' => $request->get('country'),
-            'postal' => $request->get('postal'),
+            'number' => $request->get('number'),
             'about' => $request->get('about')
         ]);
 

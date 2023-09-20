@@ -7,9 +7,9 @@
                 <div class="container-fluid">
                     {{-- titulo de la pagina --}}
                     <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="{{ route('home') }}">
-                        ED 
+                        Nova Life
                     </a>
-                    
+
                     <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
                         aria-label="Toggle navigation">
@@ -22,32 +22,35 @@
                     {{-- CONTENIDO DEL NAV --}}
                     <div class="collapse navbar-collapse" id="navigation">
                         <ul class="navbar-nav mx-auto">
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
                                     href="{{ route('home') }}">
                                     <i class="fa fa-chart-pie opacity-6 text-dark me-1"></i>
                                     Dashboard
                                 </a>
-                            </li>
+                            </li> --}}
+
                             <li class="nav-item">
                                 <a class="nav-link me-2" href="{{ route('register') }}">
                                     <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
-                                    Sign Up
+                                    Registrate
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link me-2" href="{{ route('login') }}">
                                     <i class="fas fa-key opacity-6 text-dark me-1"></i>
-                                    Sign In
+                                    Iniciar seccion
+                                </a>
+                            </li>
+                            {{-- acomodar este linl --}}
+                            <li class="nav-item">
+                                <a class="nav-link me-2" href="{{ route('login') }}">
+                                    <i class="fa fa-windows opacity-6 text-dark me-1"></i>
+                                    Sobre nosotros
                                 </a>
                             </li>
                         </ul>
-                        <ul class="navbar-nav d-lg-block d-none">
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com/product/argon-dashboard-laravel" target="_blank"
-                                    class="btn btn-sm mb-0 me-1 btn-primary">Free Download</a>
-                            </li>
-                        </ul>
+
                     </div>
                 </div>
             </nav>

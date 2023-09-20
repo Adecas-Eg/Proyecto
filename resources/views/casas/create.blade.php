@@ -69,11 +69,11 @@
                                         <label for="example-text-input" class="form-control-label">Tipo Inmueble</label>
                                         <select class="form-select" aria-label="Default select example"
                                             name="tipo_inmueble">
-                                            <option value="Casa" selected>Seleccionar</option>
-                                            <option value="Apartamento">Apartamento</option>
-                                            <option value="Casa">Casa</option>
-                                            <option value="Local">Local</option>
-                                            <option value="Lote">Lote</option>
+                                            <option selected>Seleccionar</option>
+                                            <option value="1">Apartamento</option>
+                                            <option value="2">Casa</option>
+                                            <option value="3">Local</option>
+                                            <option value="4">Lote</option>
                                             @error('tipo_inmueble')
                                                 <p class="text-danger text-xs pt-1"> {{ $message }} </p>
                                             @enderror
@@ -171,7 +171,7 @@
                                     <div class="form-group">
                                         {{-- cambiar amunto o decremento --}}
                                         <label class="form-control-label">N° Baños</label>
-                                        <input class="form-control align-content-between" type="text"
+                                        <input class="form-control align-content-between" type="number"
                                             value="{{ old('baños') }}" name="baños">
                                         @error('baños')
                                             <p class="text-danger text-xs pt-1"> {{ $message }} </p>
@@ -183,7 +183,7 @@
                                     <div class="form-group">
                                         {{-- cambiar a text area --}}
                                         <label for="asas" class="form-control-label">N° Parqueaderos</label>
-                                        <input class="form-control align-content-between" type="text"
+                                        <input class="form-control align-content-between" type="number"
                                             value="{{ old('parqueaderos') }}" name="parqueaderos">
                                         @error('parqueaderos')
                                             <p class="text-danger text-xs pt-1"> {{ $message }} </p>
@@ -195,7 +195,7 @@
                                     <div class="form-group">
                                         {{-- cambiar a text area --}}
                                         <label for="asas" class="form-control-label">N° Pisos</label>
-                                        <input class="form-control align-content-between" type="text"
+                                        <input class="form-control align-content-between" type="number"
                                             value="{{ old('pisos') }}" name="pisos">
                                         @error('pisos')
                                             <p class="text-danger text-xs pt-1"> {{ $message }} </p>
@@ -206,7 +206,8 @@
                                     <div class="form-group">
                                         {{-- cambiar a text area --}}
                                         <label for="asas" class="form-control-label">Area m<sup>2</sup></label>
-                                        <input class="form-control align-content-between" type="text" name="area" value="{{old('area')}}">
+                                        <input class="form-control align-content-between" type="number" name="area"
+                                            value="{{ old('area') }}">
                                         <div class="notification is-danger">
                                             @error('area')
                                                 <p class="text-danger text-xs pt-1"> {{ $message }} </p>
@@ -230,7 +231,8 @@
                                     <div class="form-group">
                                         {{-- cambiar a text area --}}
                                         <label for="asas" class="form-control-label">Reccorido 3d</label>
-                                        <input class="form-control align-content-between" type="text" name="url_3d" value="{{old('url_3d')}}">
+                                        <input class="form-control align-content-between" type="text" name="url_3d"
+                                            value="{{ old('url_3d') }}">
                                         @error('url_3d')
                                             <p class="text-danger text-xs pt-1"> {{ $message }} </p>
                                         @enderror

@@ -1,7 +1,7 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Your Profile'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Mi perfil'])
 
     <div class="px-2 pt-2 col-md-10">
         <div class="card shadow-lg mx-4 card-profile-bottom">
@@ -13,7 +13,7 @@
                                 {{ auth()->user()->firstname ?? 'Firstname' }} {{ auth()->user()->lastname ?? 'Lastname' }}
                             </h5>
                             <p class="mb-0 font-weight-bold text-sm">
-                                Public Relations
+                                Infirmacion del perfil
                             </p>
                         </div>
                     </div>
@@ -67,37 +67,37 @@
                         @csrf
                         <div class="card-header pb-0">
                             <div class="d-flex align-items-center">
-                                <p class="mb-0">Edit Profile</p>
-                                <button type="submit" class="btn btn-primary btn-sm ms-auto">Save</button>
+                                <p class="mb-0">Editar perfil</p>
+                                <button type="submit" class="btn btn-primary btn-sm ms-auto">Guardar</button>
                             </div>
                         </div>
                         <div class="card-body">
-                            <p class="text-uppercase text-sm">User Information</p>
+                            <p class="text-uppercase text-sm">Informacion del usuario</p>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Username</label>
+                                        <label for="example-text-input" class="form-control-label">Usuario</label>
                                         <input class="form-control" type="text" name="username"
                                             value="{{ old('username', auth()->user()->username) }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Email address</label>
+                                        <label for="example-text-input" class="form-control-label">Email </label>
                                         <input class="form-control" type="email" name="email"
                                             value="{{ old('email', auth()->user()->email) }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">First name</label>
+                                        <label for="example-text-input" class="form-control-label"> Nombre</label>
                                         <input class="form-control" type="text" name="firstname"
                                             value="{{ old('firstname', auth()->user()->firstname) }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Last name</label>
+                                        <label for="example-text-input" class="form-control-label">Apellido</label>
                                         <input class="form-control" type="text" name="lastname"
                                             value="{{ old('lastname', auth()->user()->lastname) }}">
                                     </div>
@@ -106,53 +106,54 @@
                             <hr class="horizontal dark">
                             <p class="text-uppercase text-sm">Seguridad </p>
                             <div class="row">
-                                
+
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Password</label>
+                                        <label for="example-text-input" class="form-control-label">Contraseña</label>
                                         <input class="form-control" type="password" name="password"
                                             value="{{ old('address', auth()->user()->password) }}">
                                     </div>
                                 </div>
                             </div>
                             <hr class="horizontal dark">
-                            <p class="text-uppercase text-sm">Contact Information</p>
+                            <p class="text-uppercase text-sm">Informacion de contacto</p>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Address</label>
+                                        <label for="example-text-input" class="form-control-label">Dirrecion</label>
                                         <input class="form-control" type="text" name="address"
                                             value="{{ old('address', auth()->user()->address) }}">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">City</label>
+                                        <label for="example-text-input" class="form-control-label">Ciudad</label>
                                         <input class="form-control" type="text" name="city"
                                             value="{{ old('city', auth()->user()->city) }}">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Country</label>
+                                        <label for="example-text-input" class="form-control-label">Pais</label>
                                         <input class="form-control" type="text" name="country"
                                             value="{{ old('country', auth()->user()->country) }}">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Postal code</label>
-                                        <input class="form-control" type="text" name="postal"
-                                            value="{{ old('postal', auth()->user()->postal) }}">
+                                        <label for="example-text-input" class="form-control-label">Numero</label>
+
+                                        <input class="form-control" type="number" name="number"
+                                            value="{{ old('number', auth()->user()->number) }}">
                                     </div>
                                 </div>
                             </div>
                             <hr class="horizontal dark">
-                            <p class="text-uppercase text-sm">About me</p>
+                            <p class="text-uppercase text-sm">Contacto</p>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">About me</label>
+                                        <label for="example-text-input" class="form-control-label">Sobre mi</label>
                                         <input class="form-control" type="text" name="about"
                                             value="{{ old('about', auth()->user()->about) }}">
                                     </div>

@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('casas', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug');
+            $table->string('slug')->nullable();
             $table->string('tipo_oferta');
             $table->string('tipo_inmueble');
             $table->string('estrato');
@@ -26,6 +26,7 @@ return new class extends Migration {
             $table->string('pisos');
             $table->string('area');
             $table->string('url_3d');
+            $table->string('casas');
 
 
             $table->integer('status')->nullable();
