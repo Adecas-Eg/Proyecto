@@ -8,33 +8,35 @@
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 {{-- carousel mejorar --}}
-                <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
-                    <div class="carousel-inner border radius-lg h-100 border border-4 border-dark">
-                        <div class="carousel-item active" data-mdb-interval="2000">
-                            {{-- <img src="{{ $casa->getMedia('casas')->first()->getUrl('thumb') }}" class="d-block w-100"
-                                alt="Wild Landscape" /> --}}
-                            <img src="{{ $casa->casas }}" class="d-block w-100" alt="Wild Landscape" />
+                <div class="card card-carousel overflow-hidden h-100 p-0">
+                    <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
+                        <div class="carousel-inner carousel-inner border-radius-lg h-100 h-100">
+                            <div class="carousel-item h-100 active" data-mdb-interval="2000">
+                                {{-- <img src="{{ $casa->getMedia('casas')->first()->getUrl('thumb') }}" class="d-block w-100"
+                                    alt="Wild Landscape" /> --}}
+                                <img src="{{ $casa->casas }}" class="d-block w-100" alt="Wild Landscape" />
+                            </div>
+                            <div class="carousel-item" data-mdb-interval="2000">
+                                <img src="{{ $casa->casas }}" class="d-block w-100" alt="Camera" />
+                            </div>
                         </div>
-                        <div class="carousel-item" data-mdb-interval="2000">
-                            <img src="{{ $casa->casas }}" class="d-block w-100" alt="Camera" />
-                        </div>
+    
+                        {{-- botones de carousel --}}
+                        <button class="carousel-control-prev w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
-
-                    {{-- botones de carousel --}}
-                    <button class="carousel-control-prev w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
                 </div>
             </div>
 
-
+            
 
 
 
@@ -180,7 +182,7 @@
             </section>
 
 
-            
+
         </div>
         @include('layouts.footers.auth.footer')
     </div>
