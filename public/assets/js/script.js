@@ -21,7 +21,6 @@ async function initMap() {
         position: position,
         title: "Cartagena",
     });
-    initAutoComplete()
 }
 
 function initAutoComplete() {

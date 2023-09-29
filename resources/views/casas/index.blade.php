@@ -34,7 +34,7 @@
 
     <div class="container">
         <div class="col-6" id="map"></div>
-        <input  class="form-control" type="text" id="pac-input" placeholder="ingresa una direcion">
+        <input class="form-control" type="text" id="pac-input" placeholder="ingresa una direcion">
 
 
     </div>

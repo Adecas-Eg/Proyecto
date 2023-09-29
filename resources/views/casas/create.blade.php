@@ -1,5 +1,9 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
+@push('js')
+    <script type="module" src="{{ asset('/assets/js/autocomplete.js') }}"></script>
+@endpush
+
 @section('content')
     @include('layouts.navbars.auth.topnav', ['title' => 'Casas'])
 
@@ -23,7 +27,8 @@
 
             </div>
             {{-- comiezo del formulario --}}
-            <form action="{{ route('casa.store') }}" method="post" role="form" enctype="multipart/form-data">
+            <form id="formulario" action="{{ route('casa.store') }}" method="post" role="form"
+                enctype="multipart/form-data">
 
                 @csrf
 
@@ -76,7 +81,7 @@
                                             <option value="cabaña">Cabaña</option>
                                             <option value="habitacion">Habitacion</option>
                                             <option value="bodega">Bodega</option>
-                                            
+
                                             @error('tipo_inmueble')
                                                 <p class="text-danger text-xs pt-1"> {{ $message }} </p>
                                             @enderror
@@ -121,13 +126,14 @@
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Direccion</label>
                                         <input class="form-control" type="text" value="{{ old('direccion') }}"
-                                            name="direccion">
+                                            name="direccion" id="ubicacion">
                                         @error('direccion')
                                             <p class="text-danger text-xs pt-1"> {{ $message }} </p>
                                         @enderror
 
                                     </div>
                                 </div>
+
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Departamento</label>
@@ -217,6 +223,7 @@
                                             @enderror
                                         </div>
 
+
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -241,7 +248,11 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <button class="btn btn-primary text-white">Guardar</button>
+
+                                <button onclick="enviar()" type="submit"
+                                    class="btn btn-primary text-white">Guardar</button>
+                                {{ json_encode(session()->all())}}
+
                             </div>
                         </div>
                     </div>

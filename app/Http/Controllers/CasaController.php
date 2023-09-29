@@ -67,13 +67,18 @@ class CasaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCasa $request)
+    public function store(Request $request)
     {
+
+        // Hacer algo con $variable
+
+        // Devolver una respuesta si es necesario
         $casa = Casa::create($request->validated());
-        //logica de multiples imagens con librerias
+
         $casa->user_id = auth()->user()->id;
         $casa->status = 1;
         $casa->save();
+        //logica de multiples imagens con librerias
         if (request()->hasFile('imagenes')) {
             $casa->addMultipleMediaFromRequest(['imagenes'])
                 ->each(function ($fileAdder) {
