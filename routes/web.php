@@ -28,14 +28,13 @@ use Laravel\Socialite\Facades\Socialite;
 |
 */
 
-Route::get('/', function () {
-	return view('welcome');
-});
-
 Auth::routes();
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
 
 
 Route::get('/', function () {
@@ -43,9 +42,13 @@ Route::get('/', function () {
 })->middleware('auth');
 
 
+
+//rutas google
 Route::get('/login-google', function () {
 	return Socialite::driver('google')->redirect();
 });
+
+
 
 Route::get('/google-callback', function () {
 	$user = Socialite::driver('google')->user();
@@ -83,6 +86,14 @@ Route::get('/google-callback', function () {
 
 });
 
+
+
+Route::get('/', function () {
+	return redirect()->route('casa.home');
+});
+
+
+// rutas guest password y loggin
 Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.perform');
 Route::get('/login', [LoginController::class, 'show'])->middleware('guest')->name('login');
@@ -97,7 +108,7 @@ Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard'
 
 Route::get('/principals', [CasaController::class, 'home'])->name('casa.home');
 
-
+// rutas commentarios
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/comment', [CommentController::class, 'index'])->name('comment.index');
 	Route::post('/comment/{id}', [CommentController::class, 'store'])->name('comment.store');
@@ -106,7 +117,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
-
+// Rutas casas
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/casa', [CasaController::class, 'index'])->name('casa.index');
 	Route::get('/casa/filter', [CasaController::class, 'index'])->name('casa.filter');
@@ -119,6 +130,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::patch('/casa/{casa}', [CasaController::class, 'update'])->name('casa.update');
 	Route::get('/casa/change_status/{casa}', [CasaController::class, 'change_status'])->name('casa.change_status');
 });
+
+// rutas usurios
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/users', [UserController::class, 'index'])->name('users.index');

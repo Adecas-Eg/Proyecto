@@ -12,8 +12,17 @@
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Nucleo Icons -->
+<<<<<<< HEAD
     <link href="./assets/css/nucleo-icons.css" rel="stylesheet" />
     <link href="./assets/css/nucleo-svg.css" rel="stylesheet" />
+=======
+    <link href="{{ asset('assets/css/nucleo-icons.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
+    {{-- api de map --}}
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTj4coD-nVKAVxCWCn-wsnTIDRzMZQk-c&callback=console.debug&libraries=places,marker&v=beta">
+    </script>
+>>>>>>> 6540acc (Arregle mapa ya funcion a solo falta añadircelo a las casasa para destacar)
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link href="assets/css/nucleo-svg.css" rel="stylesheet" />
@@ -47,10 +56,18 @@
     @endauth
 
     <!--   Core JS Files   -->
+<<<<<<< HEAD
     <script src="assets/js/core/popper.min.js"></script>
     <script src="assets/js/core/bootstrap.min.js"></script>
     <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
+=======
+
+
+    <script src="{{ asset('/assets/js/core/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('/assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('/assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
+>>>>>>> 6540acc (Arregle mapa ya funcion a solo falta añadircelo a las casasa para destacar)
     <script>
         var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {

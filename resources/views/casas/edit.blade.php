@@ -60,19 +60,88 @@
                                         @enderror
                                     </div>
                                 </div>
-
+                                <div class="col-md-7 mt-4">
+                                    <div class="card">
+                                        <div class="card-header pb-0 px-3">
+                                            <h6 class="mb-0">Billing Information</h6>
+                                        </div>
+                                        <div class="card-body pt-4 p-3">
+                                            <ul class="list-group">
+                                                <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+                                                    <div class="d-flex flex-column">
+                                                        <h6 class="mb-3 text-sm">Oliver Liam</h6>
+                                                        <span class="mb-2 text-xs">Company Name: <span
+                                                                class="text-dark font-weight-bold ms-sm-2">Viking Burrito</span></span>
+                                                        <span class="mb-2 text-xs">Email Address: <span
+                                                                class="text-dark ms-sm-2 font-weight-bold">oliver@burrito.com</span></span>
+                                                        <span class="text-xs">VAT Number: <span
+                                                                class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>
+                                                    </div>
+                                                    <div class="ms-auto text-end">
+                                                        <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i
+                                                                class="far fa-trash-alt me-2"></i>Delete</a>
+                                                        <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
+                                                                class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
+                                                    <div class="d-flex flex-column">
+                                                        <h6 class="mb-3 text-sm">Lucas Harper</h6>
+                                                        <span class="mb-2 text-xs">Company Name: <span
+                                                                class="text-dark font-weight-bold ms-sm-2">Stone Tech Zone</span></span>
+                                                        <span class="mb-2 text-xs">Email Address: <span
+                                                                class="text-dark ms-sm-2 font-weight-bold">lucas@stone-tech.com</span></span>
+                                                        <span class="text-xs">VAT Number: <span
+                                                                class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>
+                                                    </div>
+                                                    <div class="ms-auto text-end">
+                                                        <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i
+                                                                class="far fa-trash-alt me-2"></i>Delete</a>
+                                                        <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
+                                                                class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
+                                                    <div class="d-flex flex-column">
+                                                        <h6 class="mb-3 text-sm">Ethan James</h6>
+                                                        <span class="mb-2 text-xs">Company Name: <span
+                                                                class="text-dark font-weight-bold ms-sm-2">Fiber Notion</span></span>
+                                                        <span class="mb-2 text-xs">Email Address: <span
+                                                                class="text-dark ms-sm-2 font-weight-bold">ethan@fiber.com</span></span>
+                                                        <span class="text-xs">VAT Number: <span
+                                                                class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>
+                                                    </div>
+                                                    <div class="ms-auto text-end">
+                                                        <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i
+                                                                class="far fa-trash-alt me-2"></i>Delete</a>
+                                                        <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
+                                                                class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                                 {{-- dropdown de tippo de inmueble modificado  --}}
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Tipo Inmueble</label>
-                                        <select class="form-select" aria-label="Default select example" name="tipo_inmueble">
-                                            <option value="1" @if ($casa->tipo_inmueble == '1') selected @endif>
+                                        <select class="form-select" aria-label="Default select example"
+                                            name="tipo_inmueble">
+                                            <option value="apartamento" @if ($casa->tipo_inmueble == 'apartamento') selected @endif>
                                                 Apartamento</option>
-                                            <option value="2" @if ($casa->tipo_inmueble == '2') selected @endif>Casa
+                                            <option value="apartaestudio" @if ($casa->tipo_inmueble == 'apartaestudio') selected @endif>
+                                                Apartaestudio
                                             </option>
-                                            <option value="3" @if ($casa->tipo_inmueble == '3') selected @endif>Local
+                                            <option value="casa" @if ($casa->tipo_inmueble == 'casa') selected @endif>Casa
                                             </option>
-                                            <option value="4" @if ($casa->tipo_inmueble == '4') selected @endif>Lote
+                                            <option value="cabaña" @if ($casa->tipo_inmueble == 'cabaña') selected @endif>Cabaña
+                                            </option>
+                                            <option value="bodega" @if ($casa->tipo_inmueble == 'bodega') selected @endif>
+                                                Habitacion
+                                            </option>
+                                            <option value="habitacion" @if ($casa->tipo_inmueble == 'habitacion') selected @endif>
+                                                Bodega
                                             </option>
                                             @error('tipo_inmueble')
                                                 <p class="text-danger text-xs pt-1"> {{ $message }} </p>

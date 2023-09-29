@@ -1,8 +1,43 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
+@push('js')
+    <script type="module" src="{{ asset('/assets/js/script.js') }}"></script>
+@endpush
+
+<style>
+    /*
+ * Always set the map height explicitly to define the size of the div element
+ * that contains the map.
+ */
+    #map {
+        height: 100%;
+    }
+
+    /*
+ * Optional: Makes the sample page fill the window.
+ */
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+
+
 
 @section('content')
     @include('layouts.navbars.auth.topnav', ['title' => 'Casas'])
+
+    <input class="form-control" type="text" id="autoComplete" placeholder="ingresa una uri">
+
+    <div class="container">
+        <div class="col-6" id="map"></div>
+        <input  class="form-control" type="text" id="pac-input" placeholder="ingresa una direcion">
+
+
+    </div>
 
 
     <div class="container-fluid py-4">
@@ -24,7 +59,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-check  ">
                                             <input class="form-check-input input-group-outline" type="checkbox"
-                                                id="flexCheckDefault" name="transaccion[]" value="apartamento">
+                                                id="flexCheckDefault" name="transaccion" value="apartamento">
                                             <i class="fa fa-building" aria-hidden="true"></i>
                                             <label class="form-check-label text-white" for="flexCheckDefault">
                                                 Apartamento
@@ -34,7 +69,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-check  ">
                                             <input class="form-check-input input-group-outline" type="checkbox"
-                                                id="flexCheckDefault" name="transaccion[]" value="apartaestudio">
+                                                id="flexCheckDefault" name="transaccion" value="apartaestudio">
                                             <i class="fa fa-university" aria-hidden="true"></i>
                                             <label class="form-check-label text-white" for="flexCheckDefault">
                                                 Apartaestudio
@@ -46,7 +81,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-check  ">
                                             <input class="form-check-input input-group-outline" type="checkbox"
-                                                id="flexCheckDefault" name="transaccion[]" value="casa">
+                                                id="flexCheckDefault" name="transaccion" value="casa">
                                             <i class="fa fa-home" aria-hidden="true"></i>
                                             <label class="form-check-label text-white" for="flexCheckDefault">
                                                 Casa
@@ -56,7 +91,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-check  ">
                                             <input class="form-check-input input-group-outline" type="checkbox"
-                                                id="flexCheckDefault" name="transaccion[]" value="cabaña">
+                                                id="flexCheckDefault" name="transaccion" value="cabaña">
                                             <i class="fa fa-money" aria-hidden="true"></i>
                                             <label class="form-check-label text-white" for="flexCheckDefault">
                                                 Cabaña
@@ -68,7 +103,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-check  ">
                                             <input class="form-check-input input-group-outline" type="checkbox"
-                                                id="flexCheckDefault" name="transaccion[]" value="finca">
+                                                id="flexCheckDefault" name="transaccion" value="finca">
                                             <i class="fa fa-money" aria-hidden="true"></i>
                                             <label class="form-check-label text-white" for="flexCheckDefault">
                                                 Finca
@@ -78,7 +113,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-check  ">
                                             <input class="form-check-input input-group-outline" type="checkbox"
-                                                id="flexCheckDefault" name="transaccion[]" value="habitacion">
+                                                id="flexCheckDefault" name="transaccion" value="habitacion">
                                             <i class="fa fa-money" aria-hidden="true"></i>
                                             <label class="form-check-label text-white" for="flexCheckDefault">
                                                 Habitacion
@@ -88,7 +123,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-check  ">
                                             <input class="form-check-input input-group-outline" type="checkbox"
-                                                id="flexCheckDefault" name="transaccion[]" value="bodega">
+                                                id="flexCheckDefault" name="transaccion" value="bodega">
                                             <i class="fa fa-money" aria-hidden="true"></i>
                                             <label class="form-check-label text-white" for="flexCheckDefault">
                                                 Bodega
@@ -148,7 +183,7 @@
                                     {{ $casa->name }}
                                 </h5>
                                 <div class="h6 mt-4">
-                                    <i class="ni business_briefcase-24 mr-2">area: falta poner </i>
+                                    <i class="ni business_briefcase-24 mr-2">area: {{ $casa->tipo_inmueble }}</i>
                                 </div>
 
 
@@ -171,10 +206,6 @@
             {{ $casas->links() }}
         </div>
     </div>
-    <gmp-map center="40.12150192260742,-100.45039367675781" zoom=64" map-id="DEMO_MAP_ID">
-        <gmp-advanced-marker position="40.12150192260742,-100.45039367675781" title="My location">
-        </gmp-advanced-marker>
-    </gmp-map>
     @include('layouts.footers.auth.footer')
     </div>
 @endsection

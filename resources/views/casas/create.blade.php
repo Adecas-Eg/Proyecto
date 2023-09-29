@@ -70,10 +70,13 @@
                                         <select class="form-select" aria-label="Default select example"
                                             name="tipo_inmueble">
                                             <option selected>Seleccionar</option>
-                                            <option value="1">Apartamento</option>
-                                            <option value="2">Casa</option>
-                                            <option value="3">Local</option>
-                                            <option value="4">Lote</option>
+                                            <option value="apartamento">Apartamento</option>
+                                            <option value="apartaestudio">Apartaestudio</option>
+                                            <option value="casa">Casa</option>
+                                            <option value="cabaña">Cabaña</option>
+                                            <option value="habitacion">Habitacion</option>
+                                            <option value="bodega">Bodega</option>
+                                            
                                             @error('tipo_inmueble')
                                                 <p class="text-danger text-xs pt-1"> {{ $message }} </p>
                                             @enderror

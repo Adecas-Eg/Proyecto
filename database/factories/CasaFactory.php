@@ -20,7 +20,7 @@ class CasaFactory extends Factory
             'name' => fake()->name(),
             'tipo_oferta' => fake()->randomElement(["Arriendo", "Venta", "Alquiler"]),
             'estrato' => fake()->randomElement(["1", "2", "3"]),
-            'tipo_inmueble' => fake()->randomElement(["1", "2", "3", "4"]),
+            'tipo_inmueble' => fake()->randomElement(["apartamento", "apartaestudio", "casa", "cabaña", "habitacion", "bodega"]),
             'direccion' => fake()->address(),
             'departamento' => fake()->country(),
             'ciudad' => fake()->country(),
@@ -33,9 +33,9 @@ class CasaFactory extends Factory
             'user_id' => fake()->numberBetween(1, 50),
             'precio' => fake()->randomDigit(),
             'status' => fake()->randomElement([1, 2]),
-            'casas' =>fake()->imageUrl(),
-            
-            
+            'casas' => fake()->imageUrl(),
+
+
 
         ];
     }

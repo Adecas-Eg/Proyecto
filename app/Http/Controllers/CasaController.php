@@ -41,9 +41,16 @@ class CasaController extends Controller
 
 
         $buscar = $request->buscar;
+        $transaccion = $request->transaccion;
 
-        $casas = Casa::with(['media'])->where('name', 'like', '%' . $buscar . '%')->where('status', 'like', '1')->paginate(6 );
+        //mejorar el  filtro
+        $casas = Casa::with(['media'])
+            ->where('name', 'like', '%' . $buscar . '%')->where('status', 'like', '1')
+            ->where('tipo_inmueble', 'like', '%' . $transaccion . '%')
+            ->paginate(6);
 
+        // $casas = Casa::with(['media'])->where('name', 'like', '%' . $buscar . '%')
+        // ->where('status', 'like', '1')->orWhere('tipo_inmueble', 'like', '%' . $request->transaccion . '%')->paginate(6);
 
         // return $casas;
         return view('casas.index', compact('casas', 'buscar'));
